@@ -16,10 +16,6 @@
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
     <!--<![endif]-->
     
-    <style>
-        body{padding: 0}
-    </style>
-
 </head>
 <body>
     <!-- 头部 -->
@@ -51,6 +47,19 @@
     <div class="sidebar">
         <!-- 子导航 -->
         
+            <div id="subnav" class="subnav">
+                <?php if(!empty($_extra_menu)): ?>
+                    <?php echo extra_menu($_extra_menu,$__MENU__); endif; ?>
+                <?php if(is_array($__MENU__["child"])): $i = 0; $__LIST__ = $__MENU__["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><!-- 子导航 -->
+                    <?php if(!empty($sub_menu)): if(!empty($key)): ?><h3><i class="icon icon-unfold"></i><?php echo ($key); ?></h3><?php endif; ?>
+                        <ul class="side-sub-menu">
+                            <?php if(is_array($sub_menu)): $i = 0; $__LIST__ = $sub_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li>
+                                    <a class="item" href="<?php echo (u($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a>
+                                </li><?php endforeach; endif; else: echo "" ;endif; ?>
+                        </ul><?php endif; ?>
+                    <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
+            </div>
+        
         <!-- /子导航 -->
     </div>
     <!-- /边栏 -->
@@ -76,10 +85,57 @@
             
 
             
-    <!-- 主体 -->
-    <div id="indexMain" class="index-main">
-       <!-- 插件块 -->
-       <div class="container-span"><?php echo hook('AdminIndex');?></div>
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>模型列表</h2>
+
+	</div>
+    <div class="tools">
+        <a class="btn" href="<?php echo U('Model/add');?>">新 增</a>
+        <button class="btn ajax-post" target-form="ids" url="<?php echo U('Model/setStatus',array('status'=>1));?>">启 用</button>
+        <button class="btn ajax-post" target-form="ids" url="<?php echo U('Model/setStatus',array('status'=>0));?>">禁 用</button>
+        <a class="btn" href="<?php echo U('Model/generate');?>">生 成</a>
+    </div>
+
+	<!-- 数据列表 -->
+	<div class="data-table">
+        <div class="data-table table-striped">
+<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">编号</th>
+		<th class="">标识</th>
+		<th class="">名称</th>
+		<th class="">创建时间</th>
+		<th class="">状态</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+	<?php if(!empty($_list)): if(is_array($_list)): $i = 0; $__LIST__ = $_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+            <td><input class="ids" type="checkbox" name="ids[]" value="<?php echo ($vo["id"]); ?>" /></td>
+			<td><?php echo ($vo["id"]); ?> </td>
+			<td><?php echo ($vo["name"]); ?></td>
+			<td><a data-id="<?php echo ($vo["id"]); ?>" href="<?php echo U('model/edit?id='.$vo['id']);?>"><?php echo ($vo["title"]); ?></a></td>
+			<td><span><?php echo (time_format($vo["create_time"])); ?></span></td>
+			<td><?php echo ($vo["status_text"]); ?></td>
+			<td>
+				<a href="<?php echo U('think/lists?model='.$vo['name']);?>">数据</a>
+				<a href="<?php echo U('model/setstatus?ids='.$vo['id'].'&status='.abs(1-$vo['status']));?>" class="ajax-get"><?php echo (show_status_op($vo["status"])); ?></a>
+				<a href="<?php echo U('model/edit?id='.$vo['id']);?>">编辑</a>
+				<a href="<?php echo U('model/del?ids='.$vo['id']);?>" class="confirm ajax-get">删除</a>
+            </td>
+		</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+		<?php else: ?>
+		<td colspan="7" class="text-center"> aOh! 暂时还没有内容! </td><?php endif; ?>
+	</tbody>
+    </table>
+
+        </div>
+    </div>
+    <div class="page">
+        <?php echo ($_page); ?>
     </div>
 
         </div>
@@ -175,19 +231,22 @@
         }();
     </script>
     
-<script type="text/javascript">
-    /* 插件块关闭操作 */
-    $(".title-opt .wm-slide").each(function(){
-        $(this).click(function(){
-            $(this).closest(".columns-mod").find(".bd").toggle();
-            $(this).find("i").toggleClass("mod-up");
-        });
-    })
+    <script src="/Public/static/thinkbox/jquery.thinkbox.js"></script>
+    <script type="text/javascript">
     $(function(){
-        // $('#main').attr({'id': 'indexMain','class': 'index-main'});
-        $('.copyright').html('<div class="copyright"> ©2013 <a href="http://www.topthink.net" target="_blank">topthink.net</a> 上海顶想信息科技有限公司版权所有</div>');
-        $('.sidebar').remove();
-    })
+    	$("#search").click(function(){
+    		var url = $(this).attr('url');
+    		var status = $('select[name=status]').val();
+    		var search = $('input[name=search]').val();
+    		if(status != ''){
+    			url += '/status/' + status;
+    		}
+    		if(search != ''){
+    			url += '/search/' + search;
+    		}
+    		window.location.href = url;
+    	});
+})
 </script>
 
 </body>

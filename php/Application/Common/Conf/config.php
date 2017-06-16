@@ -14,10 +14,16 @@
 return array(
     /* 模块相关配置 */
     'AUTOLOAD_NAMESPACE' => array('Addons' => ONETHINK_ADDON_PATH), //扩展模块列表
-    'DEFAULT_MODULE'     => 'Home',
+    'DEFAULT_MODULE'     => 'Admin',
     'MODULE_DENY_LIST'   => array('Common', 'User'),
     //'MODULE_ALLOW_LIST'  => array('Home','Admin'),
+    'APP_SUB_DOMAIN_DEPLOY' => 1,
+    'APP_SUB_DOMAIN_RULES'  => [
+        //'www'   => 'Home',
+        'admin' => 'Admin',
+        'www'   => 'Home',
 
+    ],
     /* 系统数据加密设置 */
     'DATA_AUTH_KEY' => 'd(tD+WFiQV*j}L9IPCz$Rm2UAS/6Xp>[)MoerB"4', //默认数据加密KEY
 
@@ -30,7 +36,7 @@ return array(
 
     /* URL配置 */
     'URL_CASE_INSENSITIVE' => true, //默认false 表示URL区分大小写 true则表示不区分大小写
-    'URL_MODEL'            => 3, //URL模式
+    'URL_MODEL'            => 2, //URL模式
     'VAR_URL_PARAMS'       => '', // PATHINFO URL参数变量
     'URL_PATHINFO_DEPR'    => '/', //PATHINFO URL分割符
 
@@ -42,7 +48,7 @@ return array(
     'DB_HOST'   => '127.0.0.1', // 服务器地址
     'DB_NAME'   => 'lianju', // 数据库名
     'DB_USER'   => 'root', // 用户名
-    'DB_PWD'    => 'root',  // 密码
+    'DB_PWD'    => '123',  // 密码
     'DB_PORT'   => '3306', // 端口
     'DB_PREFIX' => 'onethink_', // 数据库表前缀
 

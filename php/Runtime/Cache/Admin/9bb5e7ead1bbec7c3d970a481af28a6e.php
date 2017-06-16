@@ -16,10 +16,6 @@
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
     <!--<![endif]-->
     
-    <style>
-        body{padding: 0}
-    </style>
-
 </head>
 <body>
     <!-- 头部 -->
@@ -51,6 +47,19 @@
     <div class="sidebar">
         <!-- 子导航 -->
         
+            <div id="subnav" class="subnav">
+                <?php if(!empty($_extra_menu)): ?>
+                    <?php echo extra_menu($_extra_menu,$__MENU__); endif; ?>
+                <?php if(is_array($__MENU__["child"])): $i = 0; $__LIST__ = $__MENU__["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><!-- 子导航 -->
+                    <?php if(!empty($sub_menu)): if(!empty($key)): ?><h3><i class="icon icon-unfold"></i><?php echo ($key); ?></h3><?php endif; ?>
+                        <ul class="side-sub-menu">
+                            <?php if(is_array($sub_menu)): $i = 0; $__LIST__ = $sub_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li>
+                                    <a class="item" href="<?php echo (u($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a>
+                                </li><?php endforeach; endif; else: echo "" ;endif; ?>
+                        </ul><?php endif; ?>
+                    <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
+            </div>
+        
         <!-- /子导航 -->
     </div>
     <!-- /边栏 -->
@@ -76,11 +85,61 @@
             
 
             
-    <!-- 主体 -->
-    <div id="indexMain" class="index-main">
-       <!-- 插件块 -->
-       <div class="container-span"><?php echo hook('AdminIndex');?></div>
-    </div>
+	<div class="main-title">
+		<h2>配置管理 [ <?php if(isset($_GET['group'])): ?><a href="<?php echo U('index');?>">全部</a><?php else: ?><strong>全部</strong><?php endif; ?>&nbsp;<?php if(is_array($group)): foreach($group as $key=>$vo): if(($group_id) != $key): ?><a href="<?php echo U('index?group='.$key);?>"><?php echo ($vo); ?></a><?php else: ?><strong><?php echo ($vo); ?></strong><?php endif; ?>&nbsp;<?php endforeach; endif; ?> ]</h2>
+	</div>
+
+	<div class="cf">
+		<a class="btn" href="<?php echo U('add');?>">新 增</a>
+		<a class="btn" href="javascript:;">删 除</a>
+		<button class="btn list_sort" url="<?php echo U('sort?group='.I('group'),'','');?>">排序</button>
+        
+		<!-- 高级搜索 -->
+		<div class="search-form fr cf">
+			<div class="sleft">
+				<input type="text" name="name" class="search-input" value="<?php echo I('name');?>" placeholder="请输入配置名称">
+				<a class="sch-btn" href="javascript:;" id="search" url="<?php echo U('config/index');?>"><i class="btn-search"></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="data-table table-striped">
+		<table>
+			<thead>
+				<tr>
+					<th class="row-selected">
+						<input class="checkbox check-all" type="checkbox">
+					</th>
+					<th>ID</th>
+					<th>名称</th>
+					<th>标题</th>
+					<th>分组</th>
+					<th>类型</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if(!empty($list)): if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$config): $mod = ($i % 2 );++$i;?><tr>
+						<td><input class="ids row-selected" type="checkbox" name="id[]" value="<?php echo ($config["id"]); ?>"></td>
+						<td><?php echo ($config["id"]); ?></td>
+						<td><a href="<?php echo U('edit?id='.$config['id']);?>"><?php echo ($config["name"]); ?></a></td>
+						<td><?php echo ($config["title"]); ?></td>
+						<td><?php echo (get_config_group($config["group"])); ?></td>
+						<td><?php echo (get_config_type($config["type"])); ?></td>
+						<td>
+							<a title="编辑" href="<?php echo U('edit?id='.$config['id']);?>">编辑</a>
+							<a class="confirm ajax-get" title="删除" href="<?php echo U('del?id='.$config['id']);?>">删除</a>
+						</td>
+					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+				<?php else: ?>
+				<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td><?php endif; ?>
+			</tbody>
+		</table>
+		<!-- 分页 -->
+	    <div class="page">
+	        <?php echo ($_page); ?>
+	    </div>
+	</div>
 
         </div>
         <div class="cont-ft">
@@ -176,18 +235,45 @@
     </script>
     
 <script type="text/javascript">
-    /* 插件块关闭操作 */
-    $(".title-opt .wm-slide").each(function(){
-        $(this).click(function(){
-            $(this).closest(".columns-mod").find(".bd").toggle();
-            $(this).find("i").toggleClass("mod-up");
-        });
-    })
-    $(function(){
-        // $('#main').attr({'id': 'indexMain','class': 'index-main'});
-        $('.copyright').html('<div class="copyright"> ©2013 <a href="http://www.topthink.net" target="_blank">topthink.net</a> 上海顶想信息科技有限公司版权所有</div>');
-        $('.sidebar').remove();
-    })
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+	//点击排序
+	$('.list_sort').click(function(){
+		var url = $(this).attr('url');
+		var ids = $('.ids:checked');
+		var param = '';
+		if(ids.length > 0){
+			var str = new Array();
+			ids.each(function(){
+				str.push($(this).val());
+			});
+			param = str.join(',');
+		}
+
+		if(url != undefined && url != ''){
+			window.location.href = url + '/ids/' + param;
+		}
+	});
+});
 </script>
 
 </body>

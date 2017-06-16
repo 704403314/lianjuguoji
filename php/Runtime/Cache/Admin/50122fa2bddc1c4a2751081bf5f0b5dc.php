@@ -16,10 +16,6 @@
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
     <!--<![endif]-->
     
-    <style>
-        body{padding: 0}
-    </style>
-
 </head>
 <body>
     <!-- 头部 -->
@@ -51,6 +47,19 @@
     <div class="sidebar">
         <!-- 子导航 -->
         
+            <div id="subnav" class="subnav">
+                <?php if(!empty($_extra_menu)): ?>
+                    <?php echo extra_menu($_extra_menu,$__MENU__); endif; ?>
+                <?php if(is_array($__MENU__["child"])): $i = 0; $__LIST__ = $__MENU__["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><!-- 子导航 -->
+                    <?php if(!empty($sub_menu)): if(!empty($key)): ?><h3><i class="icon icon-unfold"></i><?php echo ($key); ?></h3><?php endif; ?>
+                        <ul class="side-sub-menu">
+                            <?php if(is_array($sub_menu)): $i = 0; $__LIST__ = $sub_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li>
+                                    <a class="item" href="<?php echo (u($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a>
+                                </li><?php endforeach; endif; else: echo "" ;endif; ?>
+                        </ul><?php endif; ?>
+                    <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
+            </div>
+        
         <!-- /子导航 -->
     </div>
     <!-- /边栏 -->
@@ -76,10 +85,61 @@
             
 
             
-    <!-- 主体 -->
-    <div id="indexMain" class="index-main">
-       <!-- 插件块 -->
-       <div class="container-span"><?php echo hook('AdminIndex');?></div>
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>插件列表</h2>
+	</div>
+	<div>
+		<a href="<?php echo U('create');?>" class="btn">快速创建</a>
+	</div>
+
+	<!-- 数据列表 -->
+	<div class="data-table table-striped">
+		<table>
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>标识</th>
+					<th >描述</th>
+					<th width="43px">状态</th>
+					<th>作者</th>
+					<th width="43px">版本</th>
+					<th width="94px">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if(!empty($_list)): if(is_array($_list)): $i = 0; $__LIST__ = $_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+					<td><?php echo ($vo["title"]); ?></td>
+					<td><?php echo ($vo["name"]); ?></td>
+					<td><?php echo ($vo["description"]); ?></td>
+					<td><?php echo ((isset($vo["status_text"]) && ($vo["status_text"] !== ""))?($vo["status_text"]):"未安装"); ?></td>
+					<td><a target="_blank" href="<?php echo ((isset($vo["url"]) && ($vo["url"] !== ""))?($vo["url"]):'http://www.onethink.cn'); ?>"><?php echo ($vo["author"]); ?></a></td>
+					<td><?php echo ($vo["version"]); ?></td>
+					<td>
+						<?php if(empty($vo["uninstall"])): $class = get_addon_class($vo['name']); if(!class_exists($class)){ $has_config = 0; }else{ $addon = new $class(); $has_config = count($addon->getConfig()); } ?>
+							<?php if ($has_config): ?>
+								<a href="<?php echo U('config',array('id'=>$vo['id']));?>">设置</a>
+							<?php endif ?>
+						<?php if ($vo['status'] >=0): ?>
+							<?php if(($vo["status"]) == "0"): ?><a class="ajax-get" href="<?php echo U('enable',array('id'=>$vo['id']));?>">启用</a>
+							<?php else: ?>
+								<a class="ajax-get" href="<?php echo U('disable',array('id'=>$vo['id']));?>">禁用</a><?php endif; ?>
+						<?php endif ?>
+							
+								<a class="ajax-get" href="<?php echo U('uninstall?id='.$vo['id']);?>">卸载</a>
+							
+						<?php else: ?>
+							<a class="ajax-get" href="<?php echo U('install?addon_name='.$vo['name']);?>">安装</a><?php endif; ?>
+					</td>
+				</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+				<?php else: ?>
+				<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td><?php endif; ?>
+			</tbody>
+		</table>
+	</div>
+	<!-- 分页 -->
+    <div class="page">
+        <?php echo ($_page); ?>
     </div>
 
         </div>
@@ -175,20 +235,5 @@
         }();
     </script>
     
-<script type="text/javascript">
-    /* 插件块关闭操作 */
-    $(".title-opt .wm-slide").each(function(){
-        $(this).click(function(){
-            $(this).closest(".columns-mod").find(".bd").toggle();
-            $(this).find("i").toggleClass("mod-up");
-        });
-    })
-    $(function(){
-        // $('#main').attr({'id': 'indexMain','class': 'index-main'});
-        $('.copyright').html('<div class="copyright"> ©2013 <a href="http://www.topthink.net" target="_blank">topthink.net</a> 上海顶想信息科技有限公司版权所有</div>');
-        $('.sidebar').remove();
-    })
-</script>
-
 </body>
 </html>
