@@ -2,183 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66a1e7fc-3081-4e68-bbf7-574ab894912f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/images/add.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/css/aui-iconfont.2.0.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/cssyiqiande/aui-iconfont.2.0.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/css/aui_iconfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/cssyiqiande/aui_iconfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Home/img/beijing@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/c4-img.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Home/img/close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Home/img/del.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/hs-banner.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/hs-img1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/hs-img2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/hs-img3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/layer/skin/default/icon-ext.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/dahong/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/danlan/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/default/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/molv/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/qianhuang/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/yahui/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/yalan/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/layer/skin/default/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/icon1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/img_logo@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/img_share@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/layer/skin/default/loading-0.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/layer/skin/default/loading-1.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/layer/skin/default/loading-2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/p@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/photo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/select.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/xx@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/z@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/Controller/AccountController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Common/Model/AccountModel.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/Controller/BalanceController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Common/Model/CashModel.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/Controller/CommonController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Common/Model/CommonModel.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/Controller/DistributionController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Common/Model/DistributionModel.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/GPL-LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/Controller/GoodsController.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Common/Model/GoodsModel.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/MIT-LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/README.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/animations.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/css/api.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/cssyiqiande/api.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/css/aui-pull-refresh.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/cssyiqiande/aui-pull-refresh.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/css/aui-skin-night.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/cssyiqiande/aui-skin-night.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/css/aui-skin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/cssyiqiande/aui-skin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/css/aui-slide.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/cssyiqiande/aui-slide.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/js/aui-slide.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/css/aui.2.0.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/cssyiqiande/aui.2.0.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/ba.hashchange.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/basic.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/callbacks.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Goods/comment.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Goods/commentinfo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/unit/core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/img/debug.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Balance/edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Distribution/edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Goods/edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/enabledisable.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/unit/events.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/filter.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/unit/filter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/visual/form-reset.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/visual/formsubmission-single.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/visual/formsubmission.cfm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/visual/formsubmission.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/visual/formsubmission.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/headers.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/css/hs-style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/cssyiqiande/hs-style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/unit/html.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/index.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/unit/index.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Account/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Balance/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Distribution/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Goods/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Account/info.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Balance/info.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Distribution/info.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Goods/info.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/js/jquery-1.8.3.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/jquery-ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/jquery-ui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.br.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.cs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/jquery.multiselect.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.br.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.cs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/jquery.multiselect.filter.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.ja.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/src/jquery.multiselect.filter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/src/jquery.multiselect.filter.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.zh-cn.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.filter.zh-tw.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.ja.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/src/jquery.multiselect.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/jquery.multiselect.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/src/jquery.multiselect.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.zh-cn.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/i18n/jquery.multiselect.zh-tw.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/need/laydate.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/dahong/laydate.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/danlan/laydate.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/default/laydate.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/molv/laydate.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/qianhuang/laydate.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/yahui/laydate.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/skins/yalan/laydate.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Admin/datejs/laydate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/layer/skin/layer.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/layer/layer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/maxchecked.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/unit/methods.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/unit/options.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/position.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/preselected.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/prettify.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/prettify.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/unit/qunit.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/unit/qunit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/refresh.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/selectedlist.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/demos/single.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/visual/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/static/jquery-ui-multiselect/tests/visual/widget-containers.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/Public/Front/js/y.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Runtime/Cache/Admin/3c5566b2bfbf6ef00ac5366ba47246fe.php" afterPath="$PROJECT_DIR$/php/Runtime/Cache/Admin/3c5566b2bfbf6ef00ac5366ba47246fe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Runtime/Cache/Admin/50122fa2bddc1c4a2751081bf5f0b5dc.php" afterPath="$PROJECT_DIR$/php/Runtime/Cache/Admin/50122fa2bddc1c4a2751081bf5f0b5dc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Runtime/Temp/865e8245bc0c525aa4a48bfb433d7c3e.php" afterPath="$PROJECT_DIR$/php/Runtime/Temp/865e8245bc0c525aa4a48bfb433d7c3e.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Admin/Controller/AdminController.class.php" afterPath="$PROJECT_DIR$/php/Application/Admin/Controller/AdminController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Admin/Controller/AuthManagerController.class.php" afterPath="$PROJECT_DIR$/php/Application/Admin/Controller/AuthManagerController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/User/Model/UcenterMemberModel.class.php" afterPath="$PROJECT_DIR$/php/Application/User/Model/UcenterMemberModel.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Admin/Controller/UserController.class.php" afterPath="$PROJECT_DIR$/php/Application/Admin/Controller/UserController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Runtime/Cache/Admin/a2687d4c008de26902ac38bda01195da.php" afterPath="$PROJECT_DIR$/php/Runtime/Cache/Admin/a2687d4c008de26902ac38bda01195da.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Admin/View/User/add.html" afterPath="$PROJECT_DIR$/php/Application/Admin/View/User/add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Runtime/Cache/Admin/b595b808c2ebeeeb0478ffc30bb4e87a.php" afterPath="$PROJECT_DIR$/php/Runtime/Cache/Admin/b595b808c2ebeeeb0478ffc30bb4e87a.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Runtime/Cache/Admin/b956215329b6f9aca22277599a4efdfc.php" afterPath="$PROJECT_DIR$/php/Runtime/Cache/Admin/b956215329b6f9aca22277599a4efdfc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Admin/View/Public/base.html" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Public/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Public/Admin/js/common.js" afterPath="$PROJECT_DIR$/php/Public/Admin/js/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Runtime/Cache/Admin/e915606f4666252950bacf14eab57f78.php" afterPath="$PROJECT_DIR$/php/Runtime/Cache/Admin/e915606f4666252950bacf14eab57f78.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Admin/View/AuthManager/index.html" afterPath="$PROJECT_DIR$/php/Application/Admin/View/AuthManager/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Admin/View/Index/index.html" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Index/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Admin/View/User/index.html" afterPath="$PROJECT_DIR$/php/Application/Admin/View/User/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Admin/View/Public/login.html" afterPath="$PROJECT_DIR$/php/Application/Admin/View/Public/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Admin/View/AuthManager/managergroup.html" afterPath="$PROJECT_DIR$/php/Application/Admin/View/AuthManager/managergroup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Addons/SystemInfo/widget.html" afterPath="$PROJECT_DIR$/php/Addons/SystemInfo/widget.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/bom.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/Common/Conf/config.php" afterPath="$PROJECT_DIR$/php/Application/Common/Conf/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/Application/User/Conf/config.php" afterPath="$PROJECT_DIR$/php/Application/User/Conf/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/index.php" afterPath="$PROJECT_DIR$/php/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="lianjuguoji.iws" />
@@ -201,31 +28,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AuthGroupModel.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/Application/Admin/Model/AuthGroupModel.class.php">
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/Application/User/Conf/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="46.057144">
-              <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.4948097">
+              <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthManagerController.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/Application/Admin/Controller/AuthManagerController.class.php">
+      <file leaf-file-name="bom.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/bom.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.9047618">
-              <caret line="133" column="34" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
+            <state vertical-scroll-proportion="-4.457143">
+              <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminController.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/Application/Admin/Controller/AdminController.class.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.285714">
-              <caret line="348" column="83" selection-start-line="348" selection-start-column="83" selection-end-line="348" selection-end-column="83" />
+            <state vertical-scroll-proportion="-8.171429">
+              <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -245,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/php/Runtime/Logs/17_06_18.log">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15124" column="18" selection-start-line="15124" selection-start-column="18" selection-end-line="15124" selection-end-column="18" />
+              <caret line="15644" column="18" selection-start-line="15644" selection-start-column="18" selection-end-line="15644" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -271,31 +98,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UcenterMemberModel.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UcenterMemberModel.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/Application/User/Model/UcenterMemberModel.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40944883">
+            <state vertical-scroll-proportion="-3.3015873">
               <caret line="113" column="20" selection-start-line="113" selection-start-column="20" selection-end-line="113" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/Application/Admin/View/AuthManager/group.html">
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/Application/Common/Conf/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="15.428572">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-6.857143">
+              <caret line="50" column="26" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="managergroup.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/Application/Admin/View/AuthManager/managergroup.html">
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/Application/Admin/Conf/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.4">
-              <caret line="26" column="60" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="60" />
+            <state vertical-scroll-proportion="-15.6">
+              <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -310,9 +137,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/php/ThinkPHP/Library/Think/Think.class.php" />
-        <option value="$PROJECT_DIR$/php/index.php" />
-        <option value="$PROJECT_DIR$/php/Application/Common/Conf/config.php" />
-        <option value="$PROJECT_DIR$/php/Application/User/Conf/config.php" />
         <option value="$PROJECT_DIR$/php/Application/Admin/View/Public/login.html" />
         <option value="$PROJECT_DIR$/php/Application/Admin/View/Index/index.html" />
         <option value="$PROJECT_DIR$/php/Addons/SystemInfo/widget.html" />
@@ -337,6 +161,10 @@
         <option value="$PROJECT_DIR$/php/Runtime/Logs/17_06_18.log" />
         <option value="$PROJECT_DIR$/php/Application/Admin/Controller/UserController.class.php" />
         <option value="$PROJECT_DIR$/php/Application/User/Model/UcenterMemberModel.class.php" />
+        <option value="$PROJECT_DIR$/php/bom.php" />
+        <option value="$PROJECT_DIR$/php/index.php" />
+        <option value="$PROJECT_DIR$/php/Application/Common/Conf/config.php" />
+        <option value="$PROJECT_DIR$/php/Application/User/Conf/config.php" />
       </list>
     </option>
   </component>
@@ -426,46 +254,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Runtime" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Runtime" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Logs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -496,7 +284,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
+              <option name="myItemId" value="Conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -515,32 +303,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -584,95 +346,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
+              <option name="myItemId" value="Common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Addons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SystemInfo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Addons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SocialComment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lianjuguoji" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Addons" />
+              <option name="myItemId" value="Conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -741,7 +419,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="742" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -749,7 +427,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.065625" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.303125" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -780,46 +458,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/php/ThinkPHP/Library/Think/Think.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.2">
-          <caret line="237" column="9" selection-start-line="237" selection-start-column="9" selection-end-line="237" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/Application/Admin/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6857142">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/Application/Common/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4948097">
-          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4152249">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/ThinkPHP/Library/Think/Log.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.519031">
           <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/Application/User/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4948097">
-          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1168,7 +810,7 @@
     <entry file="file://$PROJECT_DIR$/php/Runtime/Logs/17_06_18.log">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15124" column="18" selection-start-line="15124" selection-start-column="18" selection-end-line="15124" selection-end-column="18" />
+          <caret line="15644" column="18" selection-start-line="15644" selection-start-column="18" selection-end-line="15644" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1199,8 +841,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/Application/User/Model/UcenterMemberModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40944883">
+        <state vertical-scroll-proportion="-3.3015873">
           <caret line="113" column="20" selection-start-line="113" selection-start-column="20" selection-end-line="113" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/bom.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.457143">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.171429">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/Application/Admin/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.6">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/Application/Common/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.857143">
+          <caret line="50" column="26" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/Application/User/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4948097">
+          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
           <folding />
         </state>
       </provider>
