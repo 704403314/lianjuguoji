@@ -346,7 +346,7 @@ class AdminController extends Controller {
             return $tree_nodes[$tree];
         }
         if((int)$tree){
-            $list = M('Menu')->field('id,pid,title,url,tip,hide')->order('sort asc')->select();
+            $list = M('Menu')->field('id,pid,title,url,tip,hide')->where(['hide'=>0])->order('sort asc')->select();
             foreach ($list as $key => $value) {
                 if( stripos($value['url'],MODULE_NAME)!==0 ){
                     $list[$key]['url'] = MODULE_NAME.'/'.$value['url'];

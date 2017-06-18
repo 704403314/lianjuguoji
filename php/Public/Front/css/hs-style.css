@@ -1,0 +1,79 @@
+html{padding-bottom: 3.25rem;}
+.hs-menu{background: #2b2d43;}
+.aui-searchbar-wrap.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+}
+.aui-searchbar-wrap.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+}
+i,em{list-style: none;font-style: normal;}
+.fl{float: left;}
+.fr{float: right;}
+.color-fa{color: #fafafa;}
+.color-99{color:#999;}
+.color-ff{color:#fff;}
+.color-e9{color: #e94709;}
+.color-3e{color: #3e3e3e;}
+.hs-list-item{width: 100%;}
+.hs-list-item>li.hs-img{width: 100%;float: left;position: relative;}
+.hs-img img{width: 100%;float: left;max-height: 9rem;}
+.hs-text{width: 35.33%;position:absolute;z-index: 1; top: 0;right: 0;background: rgba(0,0,0,0.7);max-height: 9rem;height:100%;}
+.hs-text1{left: 0;}
+.hs-lj{border: 0.05rem solid #c8955f;color: #c8955f; padding:0.1rem 0.5rem;}
+.hs-grade{float: left;width: 100%;position: absolute; bottom:0.5rem;left: 0; }
+
+.hs-grade >span{float: left;width: 50%;display: block;box-sizing: border-box; padding-left: 15%;}
+.hs-icon1{position: relative;}
+.hs-sel img{max-width: 1.8rem;max-height: 1.5rem; margin-top: 0.25rem;}
+.hs-icon i{background: url("../img/icon.png") center top no-repeat;background-size:12.35rem 1.1rem;width: 2rem;height: 1.25rem;display: block; margin: 0 auto;}
+.hs-icon1 i{background: url("../img/icon.png") center top no-repeat;background-size:12.35rem 1.1rem;width:1.25rem;height: 1.25rem;display: block; margin: 0 auto;}
+.hs-icon .icon-shop{background-position: 0.4rem 0;}
+.hs-icon .icon-yu{background-position: -3.4rem 0;}
+.hs-icon .icon-cart{ background-position: -7.2rem 0;}
+.hs-icon .icon-my{background-position: -10.8rem 0;}
+.hs-icon1 .icon-dz{background-position: -1.5rem 0;}
+.hs-icon1 .icon-tall{background-position: -5.7rem 0;float: left;}
+
+.hs-photo img{max-width: 1.5rem; height: 1.5rem;border-radius: 50%;}
+.hs-background{background: #f5f7f6;border-top: 0.03rem solid #ddd;}
+input[type='text'].hs-input{border: 0.05rem solid #abacac;border-radius: 0.25rem; min-height: 1.5rem;background: #fff;}
+.hs-row{width: 100%;box-sizing: border-box; padding: 2% 3% 0;}
+.hs-xie{width: 66%;float: left;}
+.hs-tall{width: 11.333%;float: left; text-align: center;position: relative;}
+.hs-details {position: relative;max-height: 8.35rem;float: left; margin-bottom: 0.5rem;}
+.hs-details img{width: 100%;max-height: 8.35rem;}
+.hs-list{width: 100%;}
+.hs-money{background: rgba(0,0,0,0.7);bottom:0;right: 0;position: absolute; padding: 0 0.5rem;}
+article{padding: 0.5rem 0.75rem;background:#fff;}
+.hs-app{ padding-top: 4rem;}
+.hs-down{width: 50%;display: block;background: #E94709; margin: 60% auto auto auto; color: #fff; height: 2rem;line-height: 2rem;border-radius: 0.5rem;}
+.hs-join{background: #f2f2f2; height: 2.25rem;line-height: 2.25rem;border-radius: 0.25rem; text-indent: 5%; margin-top: 20%;}
+.hs-icon2 i{background: url("../img/icon1.png") center top no-repeat;background-size: 3.75rem 3.75rem;display: block;width: 2.2rem;height: 1.5rem; padding-right: 1rem;}
+.hs-icon2 .icon-ph{background-position: 0.4rem 0;}
+.hs-icon2 .icon-pwd{background-position: 0.3rem -2.1rem;}
+.hs-icon2 .icon-ps{background-position: -1.5rem 0;}
+.hs-border{border: 0.03rem solid #ddd;}
+.aui-list .hs-border-none{border: none;}
+.aui-list .hs-background-none{background: none;}
+.c4-img{float: left; width: 1.55rem;height: 1.15rem;display: block;}
+.c4-img img{max-width: 1.55rem;max-height: 1.15rem;}
+.hs-cont{width: 100%; padding: 3%;box-sizing: border-box;background: #fff;overflow: hidden;}
+.lm-line{display: block;width: 100%;height: 0.05rem;background: #ddd; margin-top:0.5rem;}
+.hs-hq{width: 100%;background: #E94709; color: #fff; padding: 0.25rem 0.1rem;border-radius: 0.25rem;}
+input[type='tel'].hs-holder{width:55%;float: left; line-height: 2.2rem;height: 2.2rem;}
+.aui-list-item .wy-width{width:auto; float: right; margin-top: 0.65rem;}
+/*.hs-img2{height: 3.75rem;}*/
+.hs-img2 img{max-width: 5.75rem;height:3.75rem ;}
+.hs-width{width: 50%;display: block;padding-top:0.75rem;float: left;}
+.hs-width img{max-width:0.75rem;max-height: 0.75rem ; margin-top: 0.15rem;}
+@media only screen and (max-width:320px ) {
+	.hs-money{bottom: 0.4rem;}
+}

@@ -1,0 +1,71 @@
+<extend name="Public/base" />
+
+<block name="body">
+    <!-- 标题栏 -->
+    <div class="main-title">
+        <h2>商品评论列表</h2>
+    </div>
+    <div class="cf">
+        <!--<div class="fl">-->
+            <!--<a class="btn" href="{:U('Activity/edit')}">新 增</a>-->
+            <button class="btn ajax-post confirm" url="{:U('Goods/delComment',['number'=>$number,'p'=>$p,'cid'=>$id])}" target-form="ids">删 除</button>
+        <button class="btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+        <!--</div>-->
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+    <table class="">
+    <thead>
+        <tr>
+            <th class="row-selected row-selected"><input style="width:15px;height:15px;" class="check-all" type="checkbox"/></th>
+            <!--<th class="">ID</th>-->
+            <th class="">用户ID</th>
+            <th class="">用户昵称</th>
+            <th class="">用户头像</th>
+            <th class="">评分</th>
+            <th class="">评论内容</th>
+            <th>评论时间</th>
+
+            <th>操作</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <notempty name="_list">
+        <volist name="_list" id="vo">
+        <tr>
+            <td><input class="ids" style="width:15px;height:15px;" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+            <!--<td>{$vo.id} </td>-->
+            <td>{$vo.uid} </td>
+            <td>{$users[$vo['uid']]['nickname']}</td>
+            <td><img class="picture" height="50px" width="50px" src="{$users[$vo['uid']]['image']}" /></td>
+            <td>{$vo.score}</td>
+            <td>{$vo.content}</td>
+
+
+            <td>{$vo.createtime|time_format}</td>
+
+            <td>
+                <a href="{:U('Goods/commentinfo?id='.$vo['id'])}" >评论详情</a>
+                <a href="{:U('Goods/delComment?id='.$vo['id'].'&p='.$p.'&number='.$number.'&cid='.$id)}" class="confirm ajax-get">删除</a>
+            </td>
+
+        </tr>
+        </volist>
+        <else/>
+        <td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+        </notempty>
+    </tbody>
+    </table>
+    </div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+    <script>
+        highlight_subnav('{:U('Goods/index')}');
+    </script>
+</block>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title><?php echo ($meta_title); ?>|OneThink管理平台</title>
+    <title><?php echo ($meta_title); ?>|联聚国际管理平台</title>
     <link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/base.css" media="all">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/common.css" media="all">
@@ -25,7 +25,7 @@
     <!-- 头部 -->
     <div class="header">
         <!-- Logo -->
-        <span class="logo"></span>
+        <!--<span class="logo"></span>-->
         <!-- /Logo -->
 
         <!-- 主导航 -->
@@ -185,7 +185,7 @@
     })
     $(function(){
         // $('#main').attr({'id': 'indexMain','class': 'index-main'});
-        $('.copyright').html('<div class="copyright"> ©2013 <a href="http://www.topthink.net" target="_blank">topthink.net</a> 上海顶想信息科技有限公司版权所有</div>');
+        $('.copyright').html('<div class="copyright"> 联聚国际版权所有</div>');
         $('.sidebar').remove();
     })
 </script>

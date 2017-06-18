@@ -1,0 +1,164 @@
+<extend name="Public/base"/>
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui-multiselect/jquery.multiselect.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui-multiselect/jquery-ui.css" />
+    <script type="text/javascript" src="__STATIC__/jquery-ui-multiselect/jquery.multiselect.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/jquery-ui-multiselect/jquery-ui.min.js"></script>
+</block>
+<block name="body">
+    <div class="main-title">
+        <h2><present name="data">编辑<else />添加</present>提成比例</h2>
+    </div>
+    <form action="{:U('')}" method="post" class="form-horizontal">
+        <input type="hidden" name="id" value="{$data.id}">
+      <!--  <div class="form-item">
+            <label class="item-label">商品名称</label>
+            <div class="controls">
+                {$goods[$data['goods_id']]}
+            </div>
+        </div>-->
+
+
+
+        <div class="form-item">
+            <label class="item-label">一级返现比例</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="percent_m" value="{$data.percent_m}">  &nbsp;%
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">二级返现比例</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="percent_n" value="{$data.percent_n}">&nbsp;%
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">三级返现比例</label>
+            <div class="controls">
+                <input type="text"  class="text input-large" name="percent_o" value="{$data.percent_o}">&nbsp;%
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/jquery-ui-multiselect/jquery.multiselect.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/jquery-ui-multiselect/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $("#test-1").multiselect({
+            header: true
+        });
+        $("#test-2").multiselect({
+            header: true
+        });
+        $("#test-3").multiselect({
+            header: true
+        });
+        $("#test-4").multiselect({
+            header: true
+        });
+        $("#test-5").multiselect({
+            header: true
+        });
+
+        //上传图片
+        /* 初始化上传插件 */
+        $("#upload_image").uploadify({
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传图片",
+            "uploader"        : "{:U('File/uploadPicture',array('path'=>'goods'))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : uploadImage,
+            'onFallback' : function() {
+                alert('未检测到兼容版本的Flash.');
+            }
+        });
+        function uploadImage(file, data){
+            var data = $.parseJSON(data);
+            var src = '';
+            if (data.status) {
+                src = data.url || '__ROOT__' + data.path;
+                $("#image_path").val(src);
+                $("#image_path").parent().find('.upload-img-box').html(
+                        '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $(that).removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+
+
+
+        // 商品相册
+        $("#upload_image_gallery").uploadify({
+
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传图片",
+            "uploader"        : "{:U('File/uploadPicture',array('path'=>'goods'))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'queueID': 'fileQueue',
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : uploadImages,
+            'onFallback' : function() {
+                alert('未检测到兼容版本的Flash.');
+            }
+        });
+
+        function uploadImages(file, data){
+            var count = parseInt($('.count').val());
+            if(count>=9){
+                alert('对不起，最多可以上传9张图片');return false;
+            }
+
+            var data = $.parseJSON(data);
+            var src = '';
+            if (data.status) {
+                src = data.url || '__ROOT__' + data.path;
+//                $("#image_path").val(src);
+//                var count = $('.count').val();
+//                alert(count);
+                var newCount = count + 1;
+                $('.count').val(newCount);
+
+                $("#image_path_gallery").parent().find('.upload-img-box').append(
+                        '<div   style="float:left; margin-left:8px;" class="upload-pre-item"><img style="height:90px;" src="' + src + '"/><a  onclick="removeNode(this)" style="color:red;position:absolute;float:right;margin-top:-17px;margin-left:-7px;font-size:20px;" href="#"  >×</a><input type="hidden"  name="gallery[]" value="'+src+'"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $(that).removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+        function removeNode(node){
+//            alert(1111);
+//            var node = $(this);
+            var count = parseInt($('.count').val());
+            var newCount = count -1;
+            $('.count').val(newCount);
+            $(node).parent().remove();
+        }
+        //导航高亮
+        highlight_subnav('{:U('Distribution/index')}');
+    </script>
+</block>

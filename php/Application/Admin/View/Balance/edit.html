@@ -1,0 +1,193 @@
+<extend name="Public/base"/>
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui-multiselect/jquery.multiselect.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui-multiselect/jquery-ui.css" />
+    <script type="text/javascript" src="__STATIC__/jquery-ui-multiselect/jquery.multiselect.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/jquery-ui-multiselect/jquery-ui.min.js"></script>
+</block>
+<block name="body">
+    <div class="main-title">
+        <h2><present name="data">编辑<else />添加</present>提现记录</h2>
+    </div>
+    <form action="{:U('')}" method="post" class="form-horizontal">
+        <input type="hidden" name="id" value="{$data.id}">
+      <!--  <div class="form-item">
+            <label class="item-label">商品名称</label>
+            <div class="controls">
+                {$goods[$data['goods_id']]}
+            </div>
+        </div>-->
+
+
+
+        <div class="form-item">
+            <label class="item-label">用户名</label>
+            <div class="controls">
+                <input type="text" readonly="readonly" class="text input-large"  value="{$data.nickname}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">手机号</label>
+            <div class="controls">
+                <input type="text" readonly="readonly" class="text input-large"  value="{$data.phone}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">提现金额</label>
+            <div class="controls">
+                <input type="text" readonly="readonly" class="text input-large"  value="{$data.money}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">支付宝账号</label>
+            <div class="controls">
+                <input type="text" readonly="readonly" class="text input-large"  value="{$data.zhifubao}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">申请时间</label>
+            <div class="controls">
+                <input type="text" readonly="readonly" class="text input-large"  value="{$data.createtime}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">备注</label>
+            <div class="controls">
+                <textarea style="width:350px;height:100px;" name="content">{$data.content}</textarea>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">是否处理</label>
+            <div class="controls">
+                <label class="radio">
+                    <input type="radio" value="1" name="status" <neq name="data['status']" value="0">checked="checked"</neq>>已处理
+                </label>
+                <label class="radio">
+                    <input type="radio" value="0" name="status" <eq name="data['status']" value="0">checked="checked"</eq>>未处理
+                </label>
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/jquery-ui-multiselect/jquery.multiselect.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/jquery-ui-multiselect/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $("#test-1").multiselect({
+            header: true
+        });
+        $("#test-2").multiselect({
+            header: true
+        });
+        $("#test-3").multiselect({
+            header: true
+        });
+        $("#test-4").multiselect({
+            header: true
+        });
+        $("#test-5").multiselect({
+            header: true
+        });
+
+        //上传图片
+        /* 初始化上传插件 */
+        $("#upload_image").uploadify({
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传图片",
+            "uploader"        : "{:U('File/uploadPicture',array('path'=>'goods'))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : uploadImage,
+            'onFallback' : function() {
+                alert('未检测到兼容版本的Flash.');
+            }
+        });
+        function uploadImage(file, data){
+            var data = $.parseJSON(data);
+            var src = '';
+            if (data.status) {
+                src = data.url || '__ROOT__' + data.path;
+                $("#image_path").val(src);
+                $("#image_path").parent().find('.upload-img-box').html(
+                        '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $(that).removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+
+
+
+        // 商品相册
+        $("#upload_image_gallery").uploadify({
+
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传图片",
+            "uploader"        : "{:U('File/uploadPicture',array('path'=>'goods'))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'queueID': 'fileQueue',
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : uploadImages,
+            'onFallback' : function() {
+                alert('未检测到兼容版本的Flash.');
+            }
+        });
+
+        function uploadImages(file, data){
+            var count = parseInt($('.count').val());
+            if(count>=9){
+                alert('对不起，最多可以上传9张图片');return false;
+            }
+
+            var data = $.parseJSON(data);
+            var src = '';
+            if (data.status) {
+                src = data.url || '__ROOT__' + data.path;
+//                $("#image_path").val(src);
+//                var count = $('.count').val();
+//                alert(count);
+                var newCount = count + 1;
+                $('.count').val(newCount);
+
+                $("#image_path_gallery").parent().find('.upload-img-box').append(
+                        '<div   style="float:left; margin-left:8px;" class="upload-pre-item"><img style="height:90px;" src="' + src + '"/><a  onclick="removeNode(this)" style="color:red;position:absolute;float:right;margin-top:-17px;margin-left:-7px;font-size:20px;" href="#"  >×</a><input type="hidden"  name="gallery[]" value="'+src+'"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $(that).removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+        function removeNode(node){
+//            alert(1111);
+//            var node = $(this);
+            var count = parseInt($('.count').val());
+            var newCount = count -1;
+            $('.count').val(newCount);
+            $(node).parent().remove();
+        }
+        //导航高亮
+        highlight_subnav('{:U('Balance/index')}');
+    </script>
+</block>

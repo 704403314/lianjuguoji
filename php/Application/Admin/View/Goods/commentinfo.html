@@ -1,0 +1,128 @@
+<extend name="Public/base"/>
+
+<block name="style">
+    <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+    <php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+    <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+</block>
+
+<block name="body">
+    <div class="main-title">
+        <h2>评论详情</h2>
+    </div>
+    <form action="{:U('')}" method="post" class="form-horizontal">
+        <input type="hidden" name="id" value="{$data.id}">
+        <div class="form-item">
+            <label class="item-label">商品名称</label>
+            <div class="controls">
+                {$res.name}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">评分</label>
+            <div class="controls">
+                {$res.score}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">物流评分</label>
+            <div class="controls">
+                {$res.logistics}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">评论内容</label>
+            <div class="controls">
+                {$res.content}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">评论图片</label>
+            <div class="controls">
+                <div>
+                    <notempty name="res['image']">
+                        <foreach name="res['image']" item="image">
+                            <div  style="float:left; margin-left:5px;" ><img style="height:90px;" src="{$image}"/></div>
+                        </foreach>
+
+                    </notempty>
+                    <empty name="res['image']">
+                       无
+                    </empty>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-item">
+            <label class="item-label">评论时间</label>
+            <div class="controls">
+
+                {$res.createtime|time_format}
+            </div>
+        </div>
+
+
+
+
+        <div class="form-item">
+            <!--<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>-->
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('.time').datetimepicker({
+                format: 'yyyy-mm-dd hh:ii',
+                language:"zh-CN",
+                minView:2,
+                autoclose:true
+            });
+        });
+        //上传图片
+        /* 初始化上传插件 */
+        $("#upload_image").uploadify({
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传图片",
+            "uploader"        : "{:U('File/uploadPicture',array('path'=>'activity'))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : uploadImage,
+            'onFallback' : function() {
+                alert('未检测到兼容版本的Flash.');
+            }
+        });
+        function uploadImage(file, data){
+            var data = $.parseJSON(data);
+            var src = '';
+            if (data.status) {
+                src = data.url || '__ROOT__' + data.path;
+                $("#image_path").val(src);
+                $("#image_path").parent().find('.upload-img-box').html(
+                    '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $(that).removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+        //导航高亮
+        highlight_subnav('{:U('Goods/index')}');
+    </script>
+</block>

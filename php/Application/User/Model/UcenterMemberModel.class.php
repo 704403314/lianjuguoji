@@ -38,7 +38,7 @@ class UcenterMemberModel extends Model{
 		array('email', 'email', -5, self::EXISTS_VALIDATE), //邮箱格式不正确
 		array('email', '1,32', -6, self::EXISTS_VALIDATE, 'length'), //邮箱长度不合法
 		array('email', 'checkDenyEmail', -7, self::EXISTS_VALIDATE, 'callback'), //邮箱禁止注册
-		array('email', '', -8, self::EXISTS_VALIDATE, 'unique'), //邮箱被占用
+		//array('email', '', -8, self::EXISTS_VALIDATE, 'unique'), //邮箱被占用
 
 		/* 验证手机号码 */
 		array('mobile', '//', -9, self::EXISTS_VALIDATE), //手机格式不正确 TODO:
@@ -102,18 +102,19 @@ class UcenterMemberModel extends Model{
 		$data = array(
 			'username' => $username,
 			'password' => $password,
-			'email'    => $email,
+			//'email'    => $email,
 			'mobile'   => $mobile,
 		);
 
 		//验证手机
 		if(empty($data['mobile'])) unset($data['mobile']);
-
+		if(empty($data['email'])) unset($data['email']);
 		/* 添加用户 */
 		if($this->create($data)){
 			$uid = $this->add();
 			return $uid ? $uid : 0; //0-未知错误，大于0-注册成功
 		} else {
+
 			return $this->getError(); //错误详情见自动验证注释
 		}
 	}

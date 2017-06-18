@@ -224,7 +224,7 @@
 });
 
 /* 上传图片预览弹出层 */
-$(function(){
+/*$(function(){
     $(window).resize(function(){
         var winW = $(window).width();
         var winH = $(window).height();
@@ -273,7 +273,7 @@ $(function(){
             $(node).height($(node).height()*0.8);
         }
     }
-})
+})*/
 
 //标签页切换(无下一步)
 function showTab() {

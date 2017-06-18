@@ -1,0 +1,210 @@
+<extend name="Public/base"/>
+
+<block name="style">
+    <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+    <php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+    <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+</block>
+
+<block name="body">
+    <div class="main-title">
+        <h2>商品资料详情</h2>
+    </div>
+    <form action="{:U('')}" method="post" class="form-horizontal">
+        <input type="hidden" name="id" value="{$data.id}">
+        <div class="form-item">
+            <label class="item-label">商品名称</label>
+            <div class="controls">
+                {$res.name}
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">商品大图</label>
+            <div class="controls">
+                <div>
+                    <notempty name="res['image']">
+                        <div  style="float:left;" ><img style="height:90px;" src="{$res['image']}"/></div>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">商品相册</label>
+            <div class="controls">
+                <!-- <input type="file" id="upload_image">
+                 <input type="hidden" id="image_path" name="aaa" />-->
+                <div class="upload-img-box">
+                    <notempty name="res['gallery']">
+
+                        <foreach name="res['gallery']" item="image">
+                            <div  style="float:left;" class="upload-pre-item"><img style="height:90px;" src="{$image}"/></div>
+                        </foreach>
+
+
+                    </notempty>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">商品详情顶部图片</label>
+            <div class="controls">
+                <!-- <input type="file" id="upload_image">
+                 <input type="hidden" id="image_path" name="aaa" />-->
+                <div class="upload-img-box">
+                    <notempty name="res['photo']">
+
+                        <foreach name="res['photo']" item="photo">
+                            <div  style="float:left;" class="upload-pre-item"><img style="height:90px;" src="{$photo}"/></div>
+                        </foreach>
+
+
+                    </notempty>
+                </div>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">商品分类</label>
+            <div class="controls">
+                {$res.category_id}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">商品价格</label>
+            <div class="controls">
+                {$res.price}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">关联设计师</label>
+            <div class="controls">
+                {$res.design_id}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">商品主题</label>
+            <div class="controls">
+                {$res.theme_id}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">商品颜色</label>
+            <div class="controls">
+                {$res.color_id}
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">商品扣型</label>
+            <div class="controls">
+                {$res.button_id}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">商品袖型</label>
+            <div class="controls">
+                {$res.sleeve_id}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">绣字</label>
+            <div class="controls">
+                {$res.remark}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">选择的图案名称</label>
+            <div class="controls">
+                {$image.img_details}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">商品排序</label>
+            <div class="controls">
+                {$res.sort}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">添加时间</label>
+            <div class="controls">
+
+                {$res.createtime|time_format}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">商品简介</label>
+            <div class="controls">
+
+                {$res.content}
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">状态</label>
+            <div class="controls">
+                <switch name="res.status">
+                    <case value="0">禁用</case>
+                    <case value="1">启用</case>
+                </switch>
+
+            </div>
+        </div>
+
+
+        <div class="form-item">
+            <!--<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>-->
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('.time').datetimepicker({
+                format: 'yyyy-mm-dd hh:ii',
+                language:"zh-CN",
+                minView:2,
+                autoclose:true
+            });
+        });
+        //上传图片
+        /* 初始化上传插件 */
+        $("#upload_image").uploadify({
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传图片",
+            "uploader"        : "{:U('File/uploadPicture',array('path'=>'activity'))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : uploadImage,
+            'onFallback' : function() {
+                alert('未检测到兼容版本的Flash.');
+            }
+        });
+        function uploadImage(file, data){
+            var data = $.parseJSON(data);
+            var src = '';
+            if (data.status) {
+                src = data.url || '__ROOT__' + data.path;
+                $("#image_path").val(src);
+                $("#image_path").parent().find('.upload-img-box').html(
+                    '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $(that).removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+        //导航高亮
+        highlight_subnav('{:U('Goods/index')}');
+    </script>
+</block>
