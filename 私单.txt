@@ -1,0 +1,13 @@
+本地数据库  root   123
+短信：
+短信宝: http://www.smsbao.com/member/password/edit.jhtml
+账号：shiweipeng 密码：4317707
+微信公众号：
+账号：
+polyall@qq.com
+
+密码：
+mouse25649
+encoding pLxuxdLwN9ZnUQOcUH6T68mQvPXBEsIjr58Opw6CP83
+
+appid   wx2ac95455d468b963   appsecret  cd4e9adf126f49c299d4b711d95ac482

@@ -21,7 +21,7 @@ return array(
     'APP_SUB_DOMAIN_RULES'  => [
         //'www'   => 'Home',
         'admin' => 'Admin',
-        'www'   => 'Home',
+        'lianju'   => 'Home',
 
     ],
     /* 系统数据加密设置 */
@@ -45,10 +45,10 @@ return array(
 
     /* 数据库配置 */
     'DB_TYPE'   => 'mysqli', // 数据库类型
-    'DB_HOST'   => '127.0.0.1', // 服务器地址
+    'DB_HOST'   => '101.200.56.66', // 服务器地址
     'DB_NAME'   => 'lianju', // 数据库名
-    'DB_USER'   => 'root', // 用户名
-    'DB_PWD'    => 'HH1234',  // 密码
+    'DB_USER'   => 'shiweipeng', // 用户名
+    'DB_PWD'    => '123456',  // 密码
     'DB_PORT'   => '3306', // 端口
     'DB_PREFIX' => 'onethink_', // 数据库表前缀
 

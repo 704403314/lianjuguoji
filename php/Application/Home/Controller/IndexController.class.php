@@ -16,18 +16,49 @@ use OT\DataDictionary;
  */
 class IndexController extends HomeController {
 
+    private $appId='wx2ac95455d468b963';
+    private $secret='cd4e9adf126f49c299d4b711d95ac482';
+
+    public function _initialize()
+    {
+        Vendor('Extend.weixin');
+        $this->wechat = new \weixin();
+        //var_dump($this->wechat);exit;
+        Vendor('wechat.autoload');
+
+    }
 	//系统首页
     public function index(){
 
-        $category = D('Category')->getTree();
-        $lists    = D('Document')->lists(null);
+        $this->valid();exit;
+    }
 
-        $this->assign('category',$category);//栏目
-        $this->assign('lists',$lists);//列表
-        $this->assign('page',D('Document')->page);//分页
+    public function valid()
+    {
+        $echoStr = $_GET["echostr"];
+        if($this->checkSignature()){
+            echo $echoStr;
+            exit;
+        }
+    }
 
-                 
-        $this->display();
+    private function checkSignature()
+    {
+        $signature = $_GET["signature"];
+        $timestamp = $_GET["timestamp"];
+        $nonce = $_GET["nonce"];
+
+        $token = 'weixin';
+        $tmpArr = array($token, $timestamp, $nonce);
+        sort($tmpArr, SORT_STRING);
+        $tmpStr = implode( $tmpArr );
+        $tmpStr = sha1( $tmpStr );
+
+        if( $tmpStr == $signature ){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

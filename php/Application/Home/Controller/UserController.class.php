@@ -1,164 +1,245 @@
 <?php
-// +----------------------------------------------------------------------
-// | OneThink [ WE CAN DO IT JUST THINK IT ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2013 http://www.onethink.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
-// +----------------------------------------------------------------------
+/**
+ * Created by PhpStorm.
+ * User: admin
+ * Date: 2016/8/17
+ * Time: 9:46
+ */
 
 namespace Home\Controller;
-use User\Api\UserApi;
 
-/**
- * 用户控制器
- * 包括用户中心，用户登录及注册
- */
-class UserController extends HomeController {
 
-	/* 用户中心首页 */
-	public function index(){
-		
-	}
+use Think\Controller;
 
-	/* 注册页面 */
-	public function register($username = '', $password = '', $repassword = '', $email = '', $verify = ''){
-        if(!C('USER_ALLOW_REGISTER')){
-            $this->error('注册已关闭');
+class UserController extends Controller
+{
+
+    public function _initialize(){
+      if(empty(cookie('userinfo'))){
+            header('Location:'.U('Common/login'));
         }
-		if(IS_POST){ //注册用户
-			/* 检测验证码 */
-			if(!check_verify($verify)){
-				$this->error('验证码输入错误！');
-			}
+    }
+    /**
+     * 我的账户页面
+     */
+    public function myPage(){
+        $info = cookie('userinfo');
+        $this->assign('userinfo',$info);
+        //$info['id'] = 3;
+        // 查看是否有未支付记录
+        //$noPay = M('UserCharge')->where(['user_id'=>$info['id'],'status'=>1])->find();
+        $noPay = M('UserCharge')->alias('a')->join('left join huzhu_insure as b on a.insure_id=b.id')
+            ->where(['a.user_id'=>$info['id'],'a.status'=>1])->field('b.*,a.buyorder,a.buyid')->find();
+        $product = M('HuzhuProduct')->getField('id,name');
+        if(!empty($noPay)){
+            $noPay['name'] = $product[$noPay['product_id']];
+        }
 
-			/* 检测密码 */
-			if($password != $repassword){
-				$this->error('密码和重复密码不一致！');
-			}			
-
-			/* 调用注册接口注册用户 */
-            $User = new UserApi;
-			$uid = $User->register($username, $password, $email);
-			if(0 < $uid){ //注册成功
-				//TODO: 发送验证邮件
-				$this->success('注册成功！',U('login'));
-			} else { //注册失败，显示错误信息
-				$this->error($this->showRegError($uid));
-			}
-
-		} else { //显示注册表单
-			$this->display();
-		}
-	}
-
-	/* 登录页面 */
-	public function login($username = '', $password = '', $verify = ''){
-		if(IS_POST){ //登录验证
-			/* 检测验证码 */
-			if(!check_verify($verify)){
-				$this->error('验证码输入错误！');
-			}
-
-			/* 调用UC登录接口登录 */
-			$user = new UserApi;
-			$uid = $user->login($username, $password);
-			if(0 < $uid){ //UC登录成功
-				/* 登录用户 */
-				$Member = D('Member');
-				if($Member->login($uid)){ //登录用户
-					//TODO:跳转到登录前页面
-					$this->success('登录成功！',U('Home/Index/index'));
-				} else {
-					$this->error($Member->getError());
-				}
-
-			} else { //登录失败
-				switch($uid) {
-					case -1: $error = '用户不存在或被禁用！'; break; //系统级别禁用
-					case -2: $error = '密码错误！'; break;
-					default: $error = '未知错误！'; break; // 0-接口参数错误（调试阶段使用）
-				}
-				$this->error($error);
-			}
-
-		} else { //显示登录表单
-			$this->display();
-		}
-	}
-
-	/* 退出登录 */
-	public function logout(){
-		if(is_login()){
-			D('Member')->logout();
-			$this->success('退出成功！', U('User/login'));
-		} else {
-			$this->redirect('User/login');
-		}
-	}
-
-	/* 验证码，用于登录和注册 */
-	public function verify(){
-		$verify = new \Think\Verify();
-		$verify->entry(1);
-	}
-
-	/**
-	 * 获取用户注册错误信息
-	 * @param  integer $code 错误编码
-	 * @return string        错误信息
-	 */
-	private function showRegError($code = 0){
-		switch ($code) {
-			case -1:  $error = '用户名长度必须在16个字符以内！'; break;
-			case -2:  $error = '用户名被禁止注册！'; break;
-			case -3:  $error = '用户名被占用！'; break;
-			case -4:  $error = '密码长度必须在6-30个字符之间！'; break;
-			case -5:  $error = '邮箱格式不正确！'; break;
-			case -6:  $error = '邮箱长度必须在1-32个字符之间！'; break;
-			case -7:  $error = '邮箱被禁止注册！'; break;
-			case -8:  $error = '邮箱被占用！'; break;
-			case -9:  $error = '手机格式不正确！'; break;
-			case -10: $error = '手机被禁止注册！'; break;
-			case -11: $error = '手机号被占用！'; break;
-			default:  $error = '未知错误';
-		}
-		return $error;
-	}
-
+        //var_dump($noPay);exit;
+        if(!empty($noPay)){
+            $this->assign('noPay',$noPay);
+            $this->assign('label',1);
+            $this->assign('url',MY_URL);
+            
+        }else{
+            $this->assign('noPay','');
+            $this->assign('label',2);
+        }
+        //var_dump($noPay);exit;
+        $this->display();
+    }
 
     /**
-     * 修改密码提交
-     * @author huajie <banhuajie@163.com>
+     * 查看我的保障
      */
-    public function profile(){
-		if ( !is_login() ) {
-			$this->error( '您还没有登陆',U('User/login') );
-		}
-        if ( IS_POST ) {
-            //获取参数
-            $uid        =   is_login();
-            $password   =   I('post.old');
-            $repassword = I('post.repassword');
-            $data['password'] = I('post.password');
-            empty($password) && $this->error('请输入原密码');
-            empty($data['password']) && $this->error('请输入新密码');
-            empty($repassword) && $this->error('请输入确认密码');
+    public function insure(){
+        $info = cookie('userinfo');
+        // 查看是否有保障
+        $res = M('UserProduct')->alias('a')->join('left join huzhu_product as b on a.product_id=b.id')->where(['user_id'=>$info['id']])
+                     ->field('distinct a.order,a.insurance_name,a.time_id,a.happentime,b.name,b.image,b.wait')->select();
+        //var_dump($res);exit;
 
-            if($data['password'] !== $repassword){
-                $this->error('您输入的新密码与确认密码不一致');
-            }
-
-            $Api = new UserApi();
-            $res = $Api->updateInfo($uid, $password, $data);
-            if($res['status']){
-                $this->success('修改密码成功！');
-            }else{
-                $this->error($res['info']);
-            }
-        }else{
-            $this->display();
+        if(empty($res)){
+            header('Location:'.U('unsure'));
         }
+       
+        
+        $this->assign('list',$res);
+        $this->assign('times',M('HuzhuTime')->getField('id,time'));
+        $this->display();
+    }
+
+    /**
+     * 加入的保障详情
+     * @param  $order  订单号
+     */
+    public function insureinfo($order=null){
+
+        // 获取保障信息
+        $list = M('UserProduct')->alias('a')->join('left join huzhu_product as b on a.product_id=b.id')->where(['a.order'=>$order])
+                              ->field('a.*,b.name,b.image,b.wait,b.most')->select();
+        $times = M('HuzhuTime')->getField('id,time');
+        foreach($list as $k=>$v){
+            $list[$k]['starttime'] = date("Y年m月d日",$v['happentime']);
+            if($v['time_id']==1){
+                $list[$k]['endtime'] = date("Y年m月d日",$v['happentime']+2592000);
+            }elseif($v['time_id']==2){
+                $list[$k]['endtime'] = date("Y年m月d日",$v['happentime']+15724800);
+            }elseif($v['time_id']==3){
+                $list[$k]['endtime'] = date("Y年m月d日",$v['happentime']+31536000);
+            }else{
+                $list[$k]['endtime'] = '长期';
+            }
+
+        }
+        $this->assign('list',$list);
+        $this->assign('count',count($list));
+        // 判断保障状态
+        $label = D('HuzhuUser')->getLabel($list,$times);
+
+        // 等待期还剩多少天
+        if($label==1){
+            // 已经过了多少天
+            $wait = floor((time()-$list[0]['createtime'])/86400);
+            $middle = ceil(($list[0]['happentime']-$list[0]['createtime'])/86400) - $wait;
+            $left = '等待期剩余';
+            $right = '天';
+        }elseif($label==2){
+            $left = '已失效';
+            $middle = '';
+            $right = '';
+        }elseif($label==3){
+            $left = '已冻结';
+            $middle = '';
+            $right = '';
+        }elseif($label==4){
+            $left = '有效期剩余';
+            $right = '天';
+            // 过了多少天
+
+            $happentime = floor((time()-$list[0]['happentime'])/86400);
+            if($list[0]['time_id']==1){
+                $middle = 30-$happentime;
+            }elseif($list[0]['time_id']==2){
+                $middle = 183-$happentime;
+            }elseif($list[0]['time_id']==3){
+                $middle = 365-$happentime;
+            }elseif($list[0]['time_id']==4){
+                $left = '长期有效';
+                $middle = '';
+                $right = '';
+            }
+
+
+
+        }
+        $this->assign('left',$left);
+        $this->assign('middle',$middle);
+        $this->assign('right',$right);
+        if(empty($list[0]['most'])){
+            $most = '';
+        }else{
+            $most = $list[0]['most'];
+        }
+        $this->assign('times',$times);
+        $this->assign('most',$most);
+       
+        $this->display();
+    }
+
+    /**
+     * 未加入计划
+     */
+    public function  unsure(){
+        $this->display();
+    }
+
+    ///**
+    // * 申请互助
+    // */
+    //public function apply(){
+    //    $res = M('HuzhuApply')->select();
+    //    $this->assign('res',$res[0]);
+    //    $this->display();
+    //}
+
+    /**
+     * 展示反馈页面
+     */
+    public function suggestion(){
+        $this->display();
+    }
+
+    /**
+     * 用户反馈
+     */
+    public function addSuggestion(){
+        $data = I('post.');
+        $model = M('HuzhuSuggestion');
+        //Vendor('Extend.extend');
+        //var_dump($data);exit;
+        if(empty($data['content'])){
+            exit(json_encode(array('status' => 0, 'info' =>'请填写反馈内容')));
+        }
+        $userinfo = cookie('userinfo');
+        $data['phone'] = $userinfo['phone'];
+        $data['user_id'] = $userinfo['id'];
+        $data['createtime']=time();
+        $re=$model->add($data);
+        if($re){
+           $this->ajaxReturn(['status'=>1,'info'=>'反馈成功']);
+        }else{
+            $this->ajaxReturn(['status'=>0,'info'=>'添加反馈失败，请重新添加']);
+        }
+    }
+
+    /**
+     * 自定义分享
+     */
+    public function share(){
+        Vendor('Extend.jssdk');
+        $jssdk = new \JSSDK("wx10d9364013fad77c", "ac8298b78ce5298c7def02345d75aa40");
+        $signPackage = $jssdk->GetSignPackage();
+        $this->assign('signPackage',$signPackage);
+        $userinfo = cookie('userinfo');
+        $news = array("Title" =>$userinfo['nickname']."邀请您加入帮帮益善", "Description"=>"帮帮益善是一个真实可靠的互助社群。在这里，一人患病，众人均摊，大家互帮互助。", "PicUrl" =>MY_URL.'/Public/img/QQ20160801102712.png', "Url" =>MY_URL.'/Home/Common/share/nickname/'.$userinfo['nickname'].'/image/'.$userinfo['image']);
+        $this->assign('news',$news);
+        $this->display();
+    }
+
+    /**
+     * 展示二维码
+     */
+    public function code(){
+        $userinfo  = cookie('userinfo');
+        $this->assign('userinfo',$userinfo);
+        $this->assign('path',MY_URL);
+        $this->display();
+    }
+
+    /**
+     * 支付
+     */
+    public function pay(){
+        $id = I('get.id');
+        //$product_id = I('get.product_id');
+        $res = M('HuzhuInsure')->alias('a')->join('left join huzhu_product as b on a.product_id=b.id')
+            ->where(['a.id'=>$id])->field('a.content,a.id,a.payment,a.price,a.content,a.label,b.name')->find();
+        //var_dump($data);exit;
+        $this->assign('res',$res);
+        $this->display();
+    }
+    
+    /**
+     * 查询支付记录
+     */
+    public function record(){
+        $data = I('get.');
+        $res = M('UserCharge')->alias('a')->join('left join huzhu_product as b on a.product_id=b.id')
+                        ->where(['buyorder'=>$data['buyorder'],'a.status'=>2])
+                        ->field('a.price,a.insure_id,a.pay_time,a.order_no,b.name')->select();
+        $this->assign('res',$res);
+        $this->display();
     }
 
 }

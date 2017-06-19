@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>详情页</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <script src="js/rem.js"></script> 
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/page.css"/>
+    <link rel="stylesheet" type="text/css" href="css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+<script type="text/javascript">
+	$(window).load(function(){
+		$(".loading").addClass("loader-chanage")
+		$(".loading").fadeOut(300)
+	})
+</script>
+</head>
+<!--loading页开始-->
+<div class="loading">
+	<div class="loader">
+        <div class="loader-inner pacman">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+	</div>
+</div>
+<!--loading页结束-->
+	<body>
+		<!--header star-->
+	    <header class="mui-bar mui-bar-nav" id="header">
+			<a class="btn" href="javascript:history.go(-1)">
+	            <i class="iconfont icon-fanhui"></i>
+	        </a>
+	      
+	       
+	    </header>
+		<!--header end-->
+		
+		<div class="warp warptwo clearfloat">
+			<div class="detail clearfloat">
+				<!--banner star-->
+				<div class="banner swiper-container">
+		            <div class="swiper-wrapper">
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="upload/21.jpg" alt=""></a></div>
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="upload/21.jpg" alt=""></a></div>
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="upload/21.jpg" alt=""></a></div>
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="upload/21.jpg" alt=""></a></div>
+		            </div>
+		            <div class="swiper-pagination"></div>
+		        </div>
+				<!--banner end-->
+				<div class="top clearfloat box-s">
+					<div class="shang clearfloat">
+						<div class="zuo clearfloat fl over2 box-s">
+							小米MAX智能安卓6.4吋大屏手机双卡指纹识别Xiaomi/小米 小米Max
+						</div>
+						
+					</div>
+					<div class="xia clearfloat">
+						<p class="jifen fl box-s"><samp>￥2998</samp></p>
+						<p>销量:100</p>
+						
+					</div>
+				</div>
+				<div class="middle clearfloat box-s">
+						<span class="fl">商品详情</span>
+			
+					
+				</div>
+				
+			</div>
+		</div>
+		
+		<!--footerone star-->
+		<div class="footerone clearfloat">
+			
+			<div class="right clearfloat fl">
+				<span class="btn fl" onClick="toshare()">加入购物车</span>
+				<a href="confirm.html" class="btn btnone fl">立即购买</a>
+			</div>
+	
+		<!--footerone end-->
+		
+		<!--这里是弹出购物车内容-->
+		<div class="am-share">
+		<div class="am-share-footer"><button class="share_btn"><img src="img/chahao.png"/></button></div>
+		  <div class="am-share-sns box-s">
+		     <div class="sdetail clearfloat">
+		     	<div class="top clearfloat">
+		     		<div class="tu clearfloat fl">
+		     			<span></span>
+		     			<img src="upload/22.jpg"/>
+		     		</div>
+		     		<div class="you clearfloat fl">
+		     			<p class="tit">小米Max</p>
+		     			<span>2998购物币+700积分</span>
+		     		</div>
+		     	</div>
+		     	<div class="middle clearfloat">
+		     		<p>颜色分类</p>
+		     		<div class="xia clearfloat">
+		     			<ul>
+			     			<li class="ra3 cur">金色</li>
+			     			<li class="ra3">灰色</li>
+			     		</ul>
+		     		</div>		     		
+		     	</div>
+		     	<div class="middle clearfloat">
+		     		<p>机身内存</p>
+		     		<div class="xia clearfloat">
+		     			<ul>
+			     			<li class="ra3 cur">128G</li>
+			     			<li class="ra3">16G</li>
+			     		</ul>
+		     		</div>		     		
+		     	</div>
+		     	<div class="bottom clearfloat">
+		     		<p class="fl">购买数量</p>
+		     		<div class="you clearfloat fr">
+		     			<ul>
+		     				<li><img src="img/jian.jpg"/></li>
+		     				<li>1</li>
+		     				<li><img src="img/jia.jpg"/></li>
+		     			</ul>
+		     		</div>
+		     	</div>
+		     </div>
+		  </div>
+		  <a href="confirm.html" class="shop-btn db">确定</a>
+		</div>
+		
+		<!--footer star-->
+	    <footer class="page-footer fixed-footer" id="footer">
+			<ul>
+				<li>
+					<a href="index.html">
+						<i class="iconfont icon-shouye"></i>
+						<p>首页</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="shopcar.html">
+						<i class="iconfont icon-gouwuche"></i>
+						<p>购物车</p>
+					</a>
+				</li>
+				<li>
+					<a href="login.html">
+						<i class="iconfont icon-yonghuming"></i>
+						<p>我的</p>
+					</a>
+				</li>
+			</ul>
+		</footer>
+		<!--footer end-->
+	</body>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/others.js"></script>
+	<script type="text/javascript" src="js/hmt.js" ></script>
+	<script src="slick/slick.js" type="text/javascript" ></script>
+	<script type="text/javascript" src="js/shopcar.js" ></script>
+	<!--插件-->
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<script src="js/swiper.jquery.min.js"></script>
+</html>

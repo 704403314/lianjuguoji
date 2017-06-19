@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>我的好友</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <script src="js/rem.js"></script> 
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/page.css"/>
+    <link rel="stylesheet" type="text/css" href="css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+	<link href="css/mui.picker.css" rel="stylesheet" />
+<script type="text/javascript">
+	$(window).load(function(){
+		$(".loading").addClass("loader-chanage");
+		$(".loading").fadeOut(300);
+
+		$('.cd_btn').click(function(){
+			
+			if($(this).attr('flag') == 1){
+				$(this).find('b').addClass('jt');
+				$(this).next().stop().animate({
+					'height':"100%"
+				},500);
+				$(this).attr('flag','2');
+			}else {
+				$(this).find('b').removeClass('jt');
+				$(this).next().stop().animate({
+					'height':"0"
+				},10);
+				$(this).attr('flag','1');
+			}
+			
+		})
+
+
+	})
+</script>
+<style>
+	.first-cd{
+		height: 0;
+		width: 100%;
+		overflow: hidden;
+	}
+	.jiantou{
+		margin-left: 8rem;
+		margin-top: 0.06rem;
+		
+
+	}
+	.jiantou b{
+		content: '';
+		display: inline-block;
+		background: url('./img/jiantou.png') no-repeat;
+		background-size: 100%;
+		width: 0.5rem;
+		height: 0.3rem;
+		
+		transition: transform 1s;
+		-moz-transition: -moz-transform 1s;	/* Firefox 4 */
+		-webkit-transition: -webkit-transform 1s;	/* Safari 和 Chrome */
+		-o-transition: -o-transform 1s;	/* Opera */
+		
+	}
+
+	.jt{
+		transform:rotate(180deg);
+		-ms-transform:rotate(180deg); 	/* IE 9 */
+		-moz-transform:rotate(180deg); 	/* Firefox */
+		-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+		-o-transform:rotate(180deg); 	/* Opera */
+	}
+	.first-cd>div>div{
+		margin-top: 0.1rem !important;
+		border-top: none;
+	}
+</style>
+</head>
+<!--loading页开始-->
+<div class="loading">
+	<div class="loader">
+        <div class="loader-inner pacman">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+	</div>
+</div>
+<!--loading页结束-->
+	<body>
+		<!--header star-->
+		<header class="mui-bar mui-bar1 mui-bar-nav mui-bar-nav1" id="header">
+			<a class="btn" href="javascript:history.go(-1)">
+	            <i class="iconfont icon-fanhui"></i>
+	        </a>
+	        <div class="top-sch-box top-sch-boxtwo top-sch-boxthree flex-col">
+	                      返回
+	        </div>
+	    </header>
+	    <!--header end-->
+	    
+	    <div class="warp warpthree clearfloat">
+	    	<div class="h-top h-toptwo clearfloat box-s">
+	    		<p class="tu"><img src="img/touxiang.png"/></p>
+	    		<p class="nr">王小王</p>
+	    	</div>
+	    	<div class="apply clearfloat cd_btn" flag="1">
+	    		<div class="applylist clearfloat box-s" style="position: relative;">
+	    			<p class="fl">
+	    				1级菜单
+	    			</p>
+	    			<i class=" jiantou"><b></b></i>
+	    		</div>	    		
+	    	</div>
+	    	<div class="first-cd" >
+		    	<div class="apply clearfloat">
+		    		<div class="applylist clearfloat box-s">
+		    			<p class="fl">
+		    				1605789（王涛涛）
+		    			</p>
+		    			<i class="iconfont icon-huiyuan fr"></i>
+		    		</div>	    		
+		    	</div>
+		    	<div class="apply clearfloat">
+		    		<div class="applylist clearfloat box-s">
+		    			<p class="fl">
+		    				1605789（王涛涛）
+		    			</p>
+		    			<i class="iconfont icon-huiyuan fr"></i>
+		    		</div>	    		
+		    	</div>    	  
+		    	<div class="apply clearfloat">
+		    		<div class="applylist clearfloat box-s">
+		    			<p class="fl">
+		    				1605789（王涛涛）
+		    			</p>
+		    			<i class="iconfont icon-huiyuan fr"></i>
+		    		</div>	    		
+		    	</div>    	   
+	    	</div>
+	    	<div class="apply clearfloat cd_btn" flag="1">
+	    		<div class="applylist clearfloat box-s">
+	    			<p class="fl">
+	    				2级菜单
+	    			</p>
+	    			<i class="jiantou"><b></b></i>
+	    		</div>	    		
+	    	</div>
+	    	<div class="first-cd">
+		    	<div class="apply clearfloat">
+		    		<div class="applylist clearfloat box-s">
+		    			<p class="fl">
+		    				1605789（王涛涛）
+		    				<span>已激活</span>
+		    			</p>
+		    			<i class="iconfont icon-huiyuan fr"></i>
+		    		</div>	    		
+		    	</div>
+		    	<div class="apply clearfloat">
+		    		<div class="applylist clearfloat box-s">
+		    			<p class="fl">
+		    				1605789（王涛涛）
+		    				<span>已激活</span>
+		    			</p>
+		    			<i class="iconfont icon-huiyuan fr"></i>
+		    		</div>	    		
+		    	</div>    	  
+		    	<div class="apply clearfloat">
+		    		<div class="applylist clearfloat box-s">
+		    			<p class="fl">
+		    				1605789（王涛涛）
+		    				<span>已激活</span>
+		    			</p>
+		    			<i class="iconfont icon-huiyuan fr"></i>
+		    		</div>	    		
+		    	</div>    	   
+	    	</div>
+	    	 	
+	    </div>
+	    
+	    <!--footer star-->
+	    <footer class="page-footer fixed-footer" id="footer">
+			<ul>
+				<li>
+					<a href="index.html">
+						<i class="iconfont icon-shouye"></i>
+						<p>商城</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="shopcar.html">
+						<i class="iconfont icon-gouwuche"></i>
+						<p>购物车</p>
+					</a>
+				</li>
+				<li class="active">
+					<a href="login.html">
+						<i class="iconfont icon-yonghuming"></i>
+						<p>我的</p>
+					</a>
+				</li>
+			</ul>
+		</footer>
+		<!--footer end-->
+	</body>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/mui.picker.min.js"></script>
+	<script src="js/others.js"></script>
+	<script type="text/javascript" src="js/hmt.js" ></script>
+	<script src="slick/slick.js" type="text/javascript" ></script>
+	<!--插件-->
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<script src="js/swiper.jquery.min.js"></script>
+</html>
