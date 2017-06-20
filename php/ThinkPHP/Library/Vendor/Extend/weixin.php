@@ -365,11 +365,13 @@ class weixin{
 	}
 	
 	//获取用户基本信息
-	public function GetUserInfo($openid)
+	public function GetUserInfo($openid,$access_token)
 	{
-		$access_token = $this->get_access_token(APPID, SECRET);
-		$json=json_decode($this->curlPostGet($access_token,2));
-		$url='https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$json->access_token.'&openid='.$openid.'&lang=zh_CN';
+		//$access_token = $this->get_access_token(APPID, SECRET);
+		//$json=json_decode($this->curlPostGet($access_token,2));
+		//$url='https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$json->access_token.'&openid='.$openid.'&lang=zh_CN';
+		//$url='https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
+		$url="https://api.weixin.qq.com/sns/userinfo?access_token=".$access_token."&openid=".$openid."&lang=zh_CN" ;
 		return json_decode($this->curlPostGet($url, 2));
 	}
 

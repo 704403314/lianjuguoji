@@ -31,6 +31,43 @@ class CommonController extends Controller
 
     }
 
+
+    /**
+     * 接受code
+     */
+    public function recode(){
+//echo 11;exit;
+//        $this->display('login');exit;
+        $appid = APPID;
+        $secret = SECRET;
+        @$code = $_GET["code"];
+        $get_token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$secret.'&code='.$code.'&grant_type=authorization_code';
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL,$get_token_url);
+        curl_setopt($ch,CURLOPT_HEADER,0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        $res = curl_exec($ch);
+        curl_close($ch);
+        $json_obj = json_decode($res,true);
+//根据openid和access_token查询用户信息
+        @$access_token = $json_obj['access_token'];
+        @$openid = $json_obj['openid'];
+
+        //var_dump($secret);exit;
+        Vendor('Extend.weixin');
+        $weixin = new \weixin();
+        $userinfo = $weixin->GetUserInfo($openid,$access_token);
+        $image = $userinfo->headimgurl;
+        $nickname = $userinfo->nickname;
+        @session('openid',$openid);
+        @session('image',$image);
+        @session('nickname',$nickname);
+        //var_dump($userinfo);exit;
+        //header("Location:".U());
+        $this->display('login');
+    }
+
     /**
      * 注册
      */
@@ -70,13 +107,12 @@ class CommonController extends Controller
                             'password'=>md5($password),
                             'createtime'=>time()
                         ];
-                        $res = D('HuzhuUser')->add($data);
-                    }
 
+                    }
+                    $res = D('Account')->add($data);
                     if($res===false){
                         $this->ajaxReturn(['status'=>0,'msg'=>'注册失败']);
                     }else{
-
                         $this->ajaxReturn(['status'=>1,'msg'=>'注册成功']);
                     }
 
@@ -91,47 +127,57 @@ class CommonController extends Controller
         }
     }
     /**
-     * 接受code
-     */
-    public function recode(){
-//echo 11;exit;
-//        $this->display('login');exit;
-        $appid = APPID;
-        $secret = SECRET;
-        @$code = $_GET["code"];
-        $get_token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$secret.'&code='.$code.'&grant_type=authorization_code';
-        $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL,$get_token_url);
-        curl_setopt($ch,CURLOPT_HEADER,0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-        $res = curl_exec($ch);
-        curl_close($ch);
-        $json_obj = json_decode($res,true);
-//根据openid和access_token查询用户信息
-        @$access_token = $json_obj['access_token'];
-        @$openid = $json_obj['openid'];
-
-        //var_dump($secret);exit;
-        Vendor('Extend.weixin');
-        $weixin = new \weixin();
-        $userinfo = $weixin->GetUserInfo($openid);
-        $image = $userinfo->headimgurl;
-        $nickname = $userinfo->nickname;
-        @session('openid',$openid);
-        @session('image',$image);
-        @session('nickname',$nickname);
-
-        //header("Location:".U());
-        $this->display('login');
-    }
-
-
-    /**
      * @param null $phone  手机号
      * @param null $code   验证码
      */
     public function checkLogin($phone=null,$code=null){
+        $phone = I('post.phone');
+        $password = I('post.password');
+        if(empty($phone) || empty($password)){
+            $this->ajaxReturn(['status'=>0,'msg'=>'用户名或密码不能为空']);
+        }
+        if(!preg_match('/^1[345678]\d{9}$/', $phone)){
+            $this->ajaxReturn(['status'=>0,'msg'=>'请输入正确的手机号']);
+        }
+        $info = D('Account')->getByphone($phone);
+        $data = [];
+        // 判断是否已注册
+        if(empty($info)){
+            $this->ajaxReturn(['status'=>0,'msg'=>'该手机号还未注册']);
+        }else{
+            if(md5($password)!=$info['password']){
+                $this->ajaxReturn(['status'=>0,'msg'=>'请输入正确的密码']);
+            }
+            $data = [
+                'id'=>$info['id'],
+                'image'=>session('image'),
+                'openid'=>session('openid'),
+                'nickname'=>session('nickname'),
+                'last_ip'=>get_client_ip(),
+                'last_time'=>time()
+            ];
+            if(empty($data['openid'])){
+                unset($data['openid']);
+            }
+            if(empty($data['image'])){
+                unset($data['image']);
+            }
+            if(empty($data['nickname'])){
+                unset($data['nickname']);
+            }
+            $res = D('Account')->save($data);
+            if($res===false){
+                $this->ajaxReturn(['status'=>0,'msg'=>'登陆异常，请重新登录']);
+            }else{
+                $info['image'] = $data['image'];
+                $info['last_ip'] = $data['last_ip'];
+                $info['last_time'] = $data['last_time'];
+                $info['openid'] = $data['openid'];
+                $info['nickname'] = $data['nickname'];
+                cookie('userinfo',$info,time()+31536000,'/');
+                $this->ajaxReturn(['status'=>1,'msg'=>'登录成功']);
+            }
+        }
 
     }
 
