@@ -456,7 +456,7 @@ class weixin{
 	//$redirect_url:用户指定跳转网址
 	//$scope:0:snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），1:snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地
 	//$state:重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值
-	public function GetCode($appid,$redirect_url,$scope,$state = NULL)
+	public function GetCode($appid,$redirect_url,$scope,$state = 123)
 	{
 		if (intval($scope) == 0)
 		{
@@ -466,6 +466,7 @@ class weixin{
 		{
 			$scope = 'snsapi_userinfo';
 		}
+		$redirect_url = urlencode($redirect_url);
 		$url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$appid.'&redirect_uri='.$redirect_url.'&response_type=code&scope='.$scope.'&state='.$state.'#wechat_redirect';
 		return $url;
 	}

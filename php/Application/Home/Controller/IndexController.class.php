@@ -29,17 +29,22 @@ class IndexController extends HomeController {
     }
 	//系统首页
     public function index(){
-
-        $this->valid();exit;
+        //echo 1;exit;
+        $this->display();
     }
 
+    /**
+     * 接受微信消息  地址
+     */
     public function valid()
     {
-        $echoStr = $_GET["echostr"];
+        /*$echoStr = $_GET["echostr"];
         if($this->checkSignature()){
             echo $echoStr;
             exit;
-        }
+        }else{
+            echo '验证失败';
+        }*/
     }
 
     private function checkSignature()
@@ -61,4 +66,29 @@ class IndexController extends HomeController {
         }
     }
 
+    /**
+     * 设置菜单
+     */
+    public function setMenu(){
+        //echo MY_URL."/Home/Product/show";exit;
+        $url = $_SERVER['HTTP_HOST'];
+        //echo $url;exit;
+        $menus = [
+            'button'=>[
+                ['type'=>'view','name'=>'商城','url'=>'http://'.$url.'/Home/Index/index'],
+
+            ]
+
+        ];
+//        var_dump($menus);exit;
+        Vendor('Extend.WxService');
+        $weixin = new \WxService();
+        //$menus = $this->json_unescaped($menus);
+        //Header("Content-Type:text/json;charset=utf-8");
+        $caidan = $weixin->get_wx_menu();
+        header('content-Type:text/html;charset=utf-8');
+        //print_r($caidan);exit;
+        $res = $weixin->create_wx_menu(json_encode($menus,JSON_UNESCAPED_UNICODE));
+        var_dump($res);exit;
+    }
 }

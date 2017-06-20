@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <script src="/Public/Home/lianju/js/rem.js"></script>
+    <script src="/Public/Home/lianju/js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/page.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/slick/slick.css"/>
+<script type="text/javascript">
+	$(window).load(function(){
+		$(".loading").addClass("loader-chanage")
+		$(".loading").fadeOut(300)
+	})
+</script>
+</head>
+<!--loading页开始-->
+<div class="loading">
+	<div class="loader">
+        <div class="loader-inner pacman">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+	</div>
+</div>
+<!--loading页结束-->
+	<body>
+		<div class="login clearfloat box-s">
+			<h3>会员登录</h3>
+			<div class="list clearfloat">
+				<ul>
+					<li class="ra3">
+						<p class="fl clearfloat">
+							<span class="opa5"></span>
+							<i class="iconfont icon-yonghuming"></i>
+						</p>
+						<div class="nr clearfloat fl">
+							<span class="opa3"></span>
+							<input type="text" name="" id="" value="" placeholder="用户姓名" />
+						</div>
+					</li>
+					<li class="ra3">
+						<p class="fl clearfloat">
+							<span class="opa5"></span>
+							<i class="iconfont icon-mima"></i>
+						</p>
+						<div class="nr clearfloat fl">
+							<span class="opa3"></span>
+							<input type="text" name="" id="" value="" placeholder="登录密码" />
+						</div>
+					</li>
+					<li class="ra3">
+						<p class="fl clearfloat">
+							<span class="opa5"></span>
+							<i class="iconfont icon-yanzhengma"></i>
+						</p>
+						<div class="nr nrtwo clearfloat fl">
+							<span class="opa3"></span>
+							<input type="text" name="" id="" value="" placeholder="验证码" />
+							<samp class="db fr">0212</samp>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="mima clearfloat">
+				<ul>
+					<li class="fl">
+						<div class="xuan clearfloat fl">
+		    				
+		    			</div>
+					</li>
+					<li class="fr">
+						<a href="verification.html">找回密码？</a>
+					</li>
+				</ul>
+			</div>
+			<div class="login-btn">
+				<a href="xuzhi.html">
+					登录
+				</a>
+				<a href="{:U('Common/register')}" class="btn">
+					<span class="opa5"></span>
+					<samp>注册</samp>
+				</a>
+			</div>
+		</div>
+	</body>
+</html>

@@ -28,7 +28,7 @@ return array(
     'DATA_AUTH_KEY' => 'd(tD+WFiQV*j}L9IPCz$Rm2UAS/6Xp>[)MoerB"4', //默认数据加密KEY
 
     /* 调试配置 */
-    'SHOW_PAGE_TRACE' => true,
+    'SHOW_PAGE_TRACE' => false,
 
     /* 用户相关设置 */
     'USER_MAX_CACHE'     => 1000, //最大缓存用户数

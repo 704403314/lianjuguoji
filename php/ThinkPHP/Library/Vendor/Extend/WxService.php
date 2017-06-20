@@ -140,6 +140,7 @@ class WxService
         $res = $this->https_request($url);
         $result = json_decode($res, true);
         $this->access_token = $result["access_token"];
+        //var_dump($this->access_token);exit;
         $url = "https://api.weixin.qq.com/cgi-bin/menu/get?access_token=". $this->access_token;
         $res = $this->https_request($url);
         return json_decode($res, true);

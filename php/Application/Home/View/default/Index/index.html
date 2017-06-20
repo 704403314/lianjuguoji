@@ -1,48 +1,176 @@
-<extend name="Base/common"/>
-
-<block name="header">
-    <header class="jumbotron subhead" id="overview">
-        <div class="container">
-            <h2>源自相同起点，演绎不同精彩！</h2>
-            <p class="lead"></p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>首页</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <script src="/Public/Home/lianju/js/rem.js"></script>
+    <script src="/Public/Home/lianju/js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/page.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/slick/slick.css"/>
+<script type="text/javascript">
+	$(window).load(function(){
+		$(".loading").addClass("loader-chanage")
+		$(".loading").fadeOut(300)
+	})
+</script>
+</head>
+<!--loading页开始-->
+<div class="loading">
+	<div class="loader">
+        <div class="loader-inner pacman">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
-    </header>
-</block>
+	</div>
+</div>
+<!--loading页结束-->
+	<body>		
+		<!--header star-->
+		<header class="mui-bar mui-bar-nav" id="header">
+		<img style="width: 25px; height: 25px;" src="/Public/Home/lianju//img/qb.png">
+	        <div class="top-sch-box flex-col">
+	            <div class="centerflex">
+	                <i class="fdj iconfont icon-sousuo"></i>
+	                <input type="text" name="" id="" value="" class="sch-txt" placeholder="输入您要搜索的商品" />
+	            </div>
+	        </div>
+	       
+	    </header>
+	    <!--header end-->
+	    
+	    <!-- 侧边导航 -->
+		<div class="slide-mask"></div>
+		<div id="main" class="clearfloat warp">			
+		    <div class="mui-content">
+				<!--banner开始-->
+				<div class="banner swiper-container">
+		            <div class="swiper-wrapper">
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="/Public/Home/lianju/upload/banner.jpg" alt=""></a></div>
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="/Public/Home/lianju/upload/banner.jpg" alt=""></a></div>
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="/Public/Home/lianju/upload/banner.jpg" alt=""></a></div>
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="/Public/Home/lianju/upload/banner.jpg" alt=""></a></div>
+		            </div>
+		        </div>
+		        <!--banner结束-->
+		        <!--第一栏分类开始-->
+		        <div class="cation clearfloat box-s">
+		        	<ul>
+		        		<li>
+		        			<a href="recharge.html">
+		        				<img src="/Public/Home/lianju/img/icon1.png"/>
+		        				<p>充值中心</p>
+		        			</a>
+		        		</li>
+		        		<li>
+		        			<a href="lianmeng.html">
+		        				<img src="/Public/Home/lianju/img/icon2.png"/>
+		        				<p>推广二维码</p>
+		        			</a>
+		        		</li>
+		        		
+		        	</ul>
+		        </div>
 
-<block name="side">
-<!-- 左侧 nav
-================================================== -->
-    <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav">
-            {:W('Category/lists', array(1, true))}
-        </ul>
-    </div>
-</block>
+		        <!--like star-->
+		        <div class="like clearfloat box-s">
+		        	<div class="boutit clearfloat">
+		        		<span></span>
+		        		<samp>推荐商品</samp>
+		        	</div>
+		        	<div class="content clearfloat">
+		        		<div class="list clearfloat fl">
+		        			<a href="detail.html">
+			        			<div class="tu clearfloat">
+			        				<img src="/Public/Home/lianju/upload/9.jpg"/>
+			        			</div>
+			        			<div class="bottom clearfloat box-s">
+			        				<p class="over">休闲运动男女鞋春夏秋冬款</p>
+			        				<span>¥108.00</span>
+			        			</div>
+		        			</a>
+		        		</div>
+		        		<div class="list clearfloat fl">
+		        			<a href="detail.html">
+			        			<div class="tu clearfloat">
+			        				<img src="/Public/Home/lianju/upload/9.jpg"/>
+			        			</div>
+			        			<div class="bottom clearfloat box-s">
+			        				<p class="over">休闲运动男女鞋春夏秋冬款</p>
+			        				<span>¥108.00</span>
+			        			</div>
+		        			</a>
+		        		</div>
+		        		<div class="list clearfloat fl">
+		        			<a href="detail.html">
+			        			<div class="tu clearfloat">
+			        				<img src="/Public/Home/lianju/upload/9.jpg"/>
+			        			</div>
+			        			<div class="bottom clearfloat box-s">
+			        				<p class="over">休闲运动男女鞋春夏秋冬款</p>
+			        				<span>¥108.00</span>
+			        			</div>
+		        			</a>
+		        		</div>
+		        		<div class="list clearfloat fl">
+		        			<a href="detail.html">
+			        			<div class="tu clearfloat">
+			        				<img src="/Public/Home/lianju/upload/9.jpg"/>
+			        			</div>
+			        			<div class="bottom clearfloat box-s">
+			        				<p class="over">休闲运动男女鞋春夏秋冬款</p>
+			        				<span>¥108.00</span>
+			        			</div>
+		        			</a>
+		        		</div>
+		        	</div>
+		        </div>
+		        <!--like end-->
+	        </div
+		</div>
+		<!--footer star-->
+		<footer class="page-footer fixed-footer" id="footer">
+			<ul>
+				<li class="active">
+					<a href="index.html">
+						<i class="iconfont icon-shouye"></i>
+						<p>首页</p>
+					</a>
+				</li>
+				
+				<li>
+					<a href="shopcar.html">
+						<i class="iconfont icon-gouwuche"></i>
+						<p>购物车</p>
+					</a>
+				</li>
+				<li>
+					<a href="{:U('Common/login')}">
+						<i class="iconfont icon-yonghuming"></i>
+						<p>我的</p>
+					</a>
+				</li>
+			</ul>
+		</footer>
+		<!--footer end-->
+		<script type="text/javascript" src="/Public/Home/lianju/js/jquery-1.8.3.min.js" ></script>
+		<script src="/Public/Home/lianju/js/others.js"></script>
+		<script type="text/javascript" src="/Public/Home/lianju/js/hmt.js" ></script>
+		<script src="/Public/Home/lianju/slick/slick.js" type="text/javascript" ></script>
+		<!--插件-->
+		<link rel="stylesheet" href="/Public/Home/lianju/css/swiper.min.css">
+		<script src="/Public/Home/lianju/js/swiper.jquery.min.js"></script>
+		
+	</body>
 
-<block name="body">
-    <div class="span9">
-        <!-- Contents
-        ================================================== -->
-        <section id="contents">
-            <article:list name="article" category="1" child="true">
-                <div class="">
-                    <h3><a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a></h3>
-                </div>
-                <div>
-                    <p class="lead">{$article.description}</p>
-                </div>
-                <div>
-                    <span><a href="{:U('Article/detail?id='.$article['id'])}">查看全文</a></span>
-                    <span class="pull-right">
-                        <span class="author">{$article.uid|get_username}</span>
-                        <span>于 {$article.create_time|date='Y-m-d H:i',###}</span> 发表在 <span>
-                        <a href="{:U('Article/lists?category='.get_category_name($article['category_id']))}">{$article.category_id|get_category_title}</a></span> ( 阅读：{$article.view} )
-                    </span>
-                </div>
-                <hr/>
-            </article:list>
-
-        </section>
-    </div>
-        </div>
-</block>
+</html>

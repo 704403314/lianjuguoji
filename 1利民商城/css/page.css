@@ -121,7 +121,7 @@ label {width: 100%; display: block;  position: relative; font-weight: normal;}
 .settlement .zuo{width: 60%; height: 1.8rem; line-height: 1.8rem; padding: 0 .5rem; font-size: .5rem; color: #666666;}
 .settlement .zuo span{color: #ff4141;}
 .settlement a{width: 40%; height: 1.8rem; line-height: 1.8rem; background-color: #00cc7d; font-size: .5rem; color: #fff; text-align: center;}
-
+.settlement i{font-style: normal;}
 /*
  lists--------------------------------------------------------------------------------------
  * */
@@ -145,7 +145,7 @@ label {width: 100%; display: block;  position: relative; font-weight: normal;}
 .confirm .lie .right .jifen{width: 80%; color: #fc8f00; font-size: .45rem;}
 .lists .bottom .lie .right span{width: .8rem; height: .8rem;}
 .lists .bottom .lie .right span img{width: 100%;}
-
+.lists .bottom .lie .right .jifen, .confirm .lie .right .jifen span{color: #fc8f00;}
 /*
  detail--------------------------------------------------------------------------------------
  * */
@@ -220,6 +220,9 @@ label {width: 100%; display: block;  position: relative; font-weight: normal;}
 .confirm .lie .right span{margin-top: .2rem; color: #999999; font-size: .5rem;}
 
 .confirm .gmshu{width: 100%; padding: 0 .2rem; background-color: #fff; line-height: 1.5rem;}
+.confirm .gmshu .add{
+	padding: 0
+}
 .confirm .gmshu .you{width: 3rem; height: 1rem; margin-top: .35rem;}
 .confirm .gmshu .you ul li{float: left; height: 1rem; line-height: .8rem; width: 1rem; text-align: center;}
 .confirm .gmshu .you ul li img{width: 100%;}

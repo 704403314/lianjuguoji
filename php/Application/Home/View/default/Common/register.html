@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <script src="/Public/Home/lianju/js/rem.js"></script>
     <script src="/Public/Home/lianju/js/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/Public/static/layer/layer.js" ></script>
     <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/base.css"/>
     <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/page.css"/>
     <link rel="stylesheet" type="text/css" href="/Public/Home/lianju/css/all.css"/>
@@ -47,7 +48,7 @@
 						</p>
 						<div class="nr clearfloat fl">
 							<span class="opa3"></span>
-							<input type="text" name="" id="" value="" placeholder="手机号" />
+							<input class="phone" type="tel" name="" id="" value="" placeholder="手机号" />
 						</div>
 					</li>
 				
@@ -59,7 +60,7 @@
 						</p>
 						<div class="nr nrtwo clearfloat fl">
 							<span class="opa3"></span>
-							<input type="text" name="" id="" value="" placeholder="验证码" style="width: 50%;" />
+							<input type="tel" class="code" name="" id="" value="" placeholder="验证码" style="width: 50%;" />
 							<samp class="db fr yzm" style="width: 46%;font-size: 0.3rem;position: relative;z-index: 100;">获取手机验证码</samp>
 						</div>
 					</li>
@@ -70,20 +71,20 @@
 						</p>
 						<div class="nr clearfloat fl">
 							<span class="opa3"></span>
-							<input type="text" name="" id="" value="" placeholder="登录密码" />
+							<input type="text" class="password" name="" id="" value="" placeholder="登录密码" />
 						</div>
 					</li>
 				</ul>
 			</div>			
 			<div class="login-btn">
-				<a href="register.html">
+				<a href="#" class="register">
 					注册
 				</a>
 			</div>
 			<div class="mima mimaone clearfloat">
 				<ul>
 					<li class="fr">
-						<a href="login.html">立即登录</a>
+						<a href="{:U('Common/login')}">立即登录</a>
 					</li>
 				</ul>
 			</div>
@@ -93,21 +94,55 @@
 		var num = 1;
 		var timer;
 		$('.yzm').click(function(){
-			var timeNum = 60;
-			if(num == 1){
-				$('.yzm').html(timeNum+"秒后再次获取");
-				num = 2;
-				timer = window.setInterval(function(){
-					timeNum--;
-					$('.yzm').html(timeNum+"秒后再次获取");
-					if(timeNum == 0){
-						clearInterval(timer);
-						num = 1;
-						$('.yzm').html("获取手机验证码");
+			var btn = $('.yzm');
+			if(btn.attr('disabled')==='disabled'){
+				return false;
+			}
+			var phone = $('.phone').val();
+			if(phone==''){
+				layer.msg('请填写手机号');
+				return false;
+			}
+			if(!(/^1[34578]\d{9}$/.test(phone))){
+				layer.msg('手机号码有误，请重填');
+				return false;
+			}
+
+			var url = "{:U('Common/getCode')}";
+//            alert(url);
+			$.ajax({
+				type:'post',
+				url:url,
+				data:{'phone':phone,'type':1},
+				dataType:'json',
+				success:function(r){
+					if(r.status==1){
+						layer.msg(r.msg);
+						var timeNum = 60;
+						if(num == 1){
+							$('.yzm').html(timeNum+"秒后再次获取");
+							btn.attr("disabled", true);
+							num = 2;
+							timer = window.setInterval(function(){
+								timeNum--;
+								$('.yzm').html(timeNum+"秒后再次获取");
+								if(timeNum == 0){
+									clearInterval(timer);
+									num = 1;
+									btn.attr("disabled", false);
+									$('.yzm').html("获取手机验证码");
+								}
+
+							},1000)
+						}
+					}else {
+						layer.msg(r.msg);
 					}
 
-				},1000)
-			}
+				}
+			})
+
+
 		})
 		
 	</script>
@@ -126,7 +161,34 @@ function doValidate() {
           document.forma.phoneNum.focus();  
           return false;  
     }  
-    return true;  
-}  
+    return true;
+
+
+}
+
+// 验证注册
+$('.register').click(function(){
+//            alert(123);
+	var phone = $('.phone').val();
+	var code = $('.code').val();
+	var password = $('.password').val();
+	var url = "{:U('Common/register')}";
+//            alert(url);
+	$.ajax({
+		type:'post',
+		url:url,
+		data:{'phone':phone,'code':code,'password':password},
+		dataType:'json',
+		success:function(r) {
+			if (r.status == 1) {
+				window.location.href = "{:U('Common/login')}";
+			} else {
+				layer.msg(r.msg);
+
+			}
+		}
+	})
+	return false;
+})
 </script> 
 </html>

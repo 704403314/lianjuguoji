@@ -8,8 +8,8 @@
 
 namespace Home\Controller;
 use Think\Controller;
-define("APPID", "wx10d9364013fad77c");
-define("SECRET", "ac8298b78ce5298c7def02345d75aa40");
+define("APPID", "wx2ac95455d468b963");
+define("SECRET", "cd4e9adf126f49c299d4b711d95ac482");
 class CommonController extends Controller
 {
 
@@ -24,15 +24,68 @@ class CommonController extends Controller
         //echo  232;exit;
         Vendor('Extend.weixin');
         $weixin = new \weixin();
-            $url=$weixin->GetCode(APPID,MY_URL.'/Home/Common/recode',0);
-        //var_dump(APPID);exit;
+        $host = 'http://'.$_SERVER['HTTP_HOST'];
+            $url=$weixin->GetCode(APPID,$host.'/Common/recode',1);
+        //var_dump($url);exit;
             header("Location:".$url);
 
     }
 
+    /**
+     * 注册
+     */
     public function register(){
         if(IS_POST){
+            $phone = I('post.phone');
+            $code = I('post.code');
+            $password = I('post.password');
+            //var_dump(strlen($password));exit;
+            if(empty($phone) || empty($code)){
+                $this->ajaxReturn(['status'=>0,'msg'=>'手机号或验证码不能为空']);
+            }
+            if(!preg_match('/^1[345678]\d{9}$/', $phone)){
+                $this->ajaxReturn(['status'=>0,'msg'=>'请输入正确的手机号']);
+            }
+            if(empty($password)){
+                $this->ajaxReturn(['status'=>0,'msg'=>'请输入密码']);
+            }
+            if(strlen($password<6)){
+                $this->ajaxReturn(['status'=>0,'msg'=>'密码长度至少为6位']);
+            }
 
+            // 验证验证码
+            $codeData = M('Code')->where(['phone'=>$phone])->order('createtime desc')->getField('code');
+            //var_dump($codeData,$code);exit;
+            if($codeData==$code){
+                M('Code')->where(['phone'=>$phone])->delete();
+
+                $info = D('Account')->getByphone($phone);
+
+                $data = [];
+                // 判断是否已注册
+                if(empty($info)){
+                    if(empty(I('get.parentid'))){
+                        $data = [
+                            'phone'=>$phone,
+                            'password'=>md5($password),
+                            'createtime'=>time()
+                        ];
+                        $res = D('HuzhuUser')->add($data);
+                    }
+
+                    if($res===false){
+                        $this->ajaxReturn(['status'=>0,'msg'=>'注册失败']);
+                    }else{
+
+                        $this->ajaxReturn(['status'=>1,'msg'=>'注册成功']);
+                    }
+
+                }else{
+                    $this->ajaxReturn(['status'=>0,'msg'=>'该手机号已存在']);
+                }
+            }else{
+                $this->ajaxReturn(['status'=>0,'msg'=>'请输入正确的验证码']);
+            }
         }else{
             $this->display();
         }
@@ -58,8 +111,8 @@ class CommonController extends Controller
 //根据openid和access_token查询用户信息
         @$access_token = $json_obj['access_token'];
         @$openid = $json_obj['openid'];
-        //var_dump($openid);exit;
-        
+
+        //var_dump($secret);exit;
         Vendor('Extend.weixin');
         $weixin = new \weixin();
         $userinfo = $weixin->GetUserInfo($openid);
@@ -68,6 +121,8 @@ class CommonController extends Controller
         @session('openid',$openid);
         @session('image',$image);
         @session('nickname',$nickname);
+
+        //header("Location:".U());
         $this->display('login');
     }
 
@@ -77,81 +132,6 @@ class CommonController extends Controller
      * @param null $code   验证码
      */
     public function checkLogin($phone=null,$code=null){
-        $phone = I('post.phone');
-        $code = I('post.code');
-        if(empty($phone) || empty($code)){
-            $this->ajaxReturn(['status'=>0,'msg'=>'手机号或验证码不能为空']);
-        }
-        if(!preg_match('/^1[345678]\d{9}$/', $phone)){
-            $this->ajaxReturn(['status'=>0,'msg'=>'请输入正确的手机号']);
-        }
-        // 验证验证码
-        $codeData = M('HuzhuCode')->where(['phone'=>$phone])->order('createtime desc')->getField('code');
-        //var_dump($codeData,$code);exit;
-        if($codeData==$code){
-            M('HuzhuCode')->where(['phone'=>$phone])->delete();
-
-            $info = D('HuzhuUser')->getByphone($phone);
-
-            $data = [];
-            // 判断是否已注册
-            if(empty($info)){
-                $data = [
-                    'openid'=>session('openid'),
-                    'image'=>session('image'),
-                    'nickname'=>session('nickname'),
-                    'last_ip'=>get_client_ip(),
-                    'last_time'=>time(),
-                    'phone'=>$phone,
-                    'createtime'=>time()
-                ];
-                $res = D('HuzhuUser')->add($data);
-                if($res===false){
-                    $this->ajaxReturn(['status'=>0,'msg'=>'注册失败']);
-                }else{
-                    $data['id']=$res;
-                    cookie('userinfo',$data,time()+31536000,'/');
-                    $this->ajaxReturn(['status'=>1,'msg'=>'注册成功']);
-                }
-
-
-                //var_dump($info);exit;
-
-            }else{
-                $data = [
-                    'id'=>$info['id'],
-                    'image'=>session('image'),
-                    'openid'=>session('openid'),
-                    'nickname'=>session('nickname'),
-                    'last_ip'=>get_client_ip(),
-                    'last_time'=>time()
-                ];
-                if(empty($data['openid'])){
-                    unset($data['openid']);
-                }
-                if(empty($data['image'])){
-                    unset($data['image']);
-                }
-                if(empty($data['nickname'])){
-                    unset($data['nickname']);
-                }
-                $res = D('HuzhuUser')->save($data);
-                if($res===false){
-                    $this->ajaxReturn(['status'=>0,'msg'=>'更新您的信息失败，请重新登录']);
-                }else{
-                    $info['image'] = $data['image'];
-                    $info['last_ip'] = $data['last_ip'];
-                    $info['last_time'] = $data['last_time'];
-                    $info['openid'] = $data['openid'];
-                    $info['nickname'] = $data['nickname'];
-                    cookie('userinfo',$info,time()+31536000,'/');
-                    $this->ajaxReturn(['status'=>1,'msg'=>'登录成功']);
-                }
-            }
-        }else{
-            $this->ajaxReturn(['status'=>0,'msg'=>'请输入正确的验证码']);
-        }
-
 
     }
 
@@ -160,32 +140,25 @@ class CommonController extends Controller
      * @param null $phone  手机号
      */
     public function getCode($phone=null){
-        $phone = I('get.phone');
+        $phone = I('post.phone');
+        $type = I('post.type');
         //var_dump($phone);exit;
-        if(empty($phone)){
-            $this->ajaxReturn(['status'=>0,'msg'=>'请输入手机号']);
+        $info = D('Account')->getByphone($phone);
+        if(!empty($info) &&$type==1){
+            $this->ajaxReturn(['status'=>0,'msg'=>'该手机号已注册']);
         }
-        if(!preg_match('/^1[345678]\d{9}$/', $phone)){
-            $this->ajaxReturn(['status'=>0,'msg'=>'请输入正确的手机号']);
+        if(empty($info) &&$type==2){
+            $this->ajaxReturn(['status'=>0,'msg'=>'该手机号还未注册']);
         }
         $code = createRandomNum(4);
-
-        $data = [
-            'code'=>$code,
-            'product'=>'帮帮益善',
-        ];
-        $message = M('HuzhuMessage')->where(['status'=>1])->find();
-        $sign = $message['sign'];
-        $tmplate = $message['content'];
-
-        //var_dump($message);exit;
-        $res = sendSms($phone,$data,$sign,$tmplate);
+        $content = '【联聚国际】 您的验证码为'.$code;
+        $res = sendSms($content,$phone);
         //var_dump($res);exit;
-        if($res){
-            M('HuzhuCode')->add(['code'=>$code,'phone'=>$phone,'createtime'=>time()]);
+        if($res=='短信发送成功'){
+            M('Code')->add(['code'=>$code,'phone'=>$phone,'createtime'=>time()]);
             $this->ajaxReturn(['status'=>1,'msg'=>'验证码发送成功']);
         }else{
-            $this->ajaxReturn(['status'=>0,'msg'=>'获取验证码失败，请重新获取']);
+            $this->ajaxReturn(['status'=>0,'msg'=>$res]);
         }
     }
 
