@@ -156,6 +156,7 @@ class CommonController extends Controller
                 'last_ip'=>get_client_ip(),
                 'last_time'=>time()
             ];
+            //var_dump($data);exit;
             if(empty($data['openid'])){
                 unset($data['openid']);
             }
@@ -213,7 +214,7 @@ class CommonController extends Controller
      */
     public function logout(){
         cookie('userinfo',null);
-        $this->ajaxReturn(['state'=>1,'msg'=>'退出成功']);
+        $this->ajaxReturn(['status'=>1,'msg'=>'退出成功']);
     }
 
 
@@ -253,6 +254,66 @@ class CommonController extends Controller
         $this->display();
     }
 
+    /**
+     * 忘记密码第一步
+     */
+    public function forgetpwd(){
+        if(IS_POST){
+            $phone = I('post.phone');
+            $code = I('post.code');
+            if(empty($phone) || empty($code)){
+                $this->ajaxReturn(['status'=>0,'msg'=>'手机号或验证码不能为空']);
+            }
+            if(!preg_match('/^1[345678]\d{9}$/', $phone)){
+                $this->ajaxReturn(['status'=>0,'msg'=>'请输入正确的手机号']);
+            }
+
+            // 验证验证码
+            $codeData = M('Code')->where(['phone'=>$phone])->order('createtime desc')->getField('code');
+            //var_dump($codeData,$code);exit;
+            if($codeData==$code){
+                M('Code')->where(['phone'=>$phone])->delete();
+                $info = D('Account')->getByphone($phone);
+                if(empty($info)){
+                    $this->ajaxReturn(['status'=>0,'msg'=>'该手机号不存在']);
+                }else{
+                    $this->ajaxReturn(['status'=>1,'msg'=>'下一步操作']);
+                }
+            }else{
+                $this->ajaxReturn(['status'=>0,'msg'=>'请输入正确的验证码']);
+            }
+
+        }else{
+            $this->display();
+        }
+    }
+
+    /**
+     * 忘记密码下一步
+     */
+    public function nextbu(){
+        if(IS_POST){
+            $newpwd = I('post.newpwd');
+            $phone = I('post.phone');
+            if(empty($phone)){
+                $this->ajaxReturn(['status'=>0,'msg'=>'网络异常，请重新操作']);
+            }
+            if(!preg_match('/^1[345678]\d{9}$/', $phone)){
+                $this->ajaxReturn(['status'=>0,'msg'=>'网络异常,请返回重新操作']);
+            }
+            $res = M('Account')->where(['phone'=>$phone])->save(['password'=>md5($newpwd)]);
+            if($res===false){
+                $this->ajaxReturn(['status'=>1,'msg'=>'网络异常,更新失败']);
+            }else{
+                $this->ajaxReturn(['status'=>1,'msg'=>'成功']);
+            }
+
+        }else{
+            $phone = I('get.phone');
+            $this->assign('phone'.$phone);
+            $this->display();
+        }
+    }
 
 
 

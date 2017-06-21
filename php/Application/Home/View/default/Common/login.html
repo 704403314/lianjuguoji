@@ -83,7 +83,7 @@
 		    			</div>
 					</li>
 					<li class="fr">
-						<a href="{:U('Common/forgetPwd')}">找回密码？</a>
+						<a href="{:U('Common/forgetpwd')}">找回密码？</a>
 					</li>
 				</ul>
 			</div>
@@ -121,7 +121,7 @@
 			dataType:'json',
 			success:function(r) {
 				if (r.status == 1) {
-					window.location.href = "{:U('User/myPage')}";
+					window.location.href = "{:U('User/mypage')}";
 				} else {
 					layer.msg(r.msg);
 

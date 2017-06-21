@@ -22,175 +22,11 @@ class UserController extends Controller
     /**
      * 我的账户页面
      */
-    public function myPage(){
+    public function mypage(){
         $info = cookie('userinfo');
         $this->assign('userinfo',$info);
-        //$info['id'] = 3;
-        // 查看是否有未支付记录
-        //$noPay = M('UserCharge')->where(['user_id'=>$info['id'],'status'=>1])->find();
-        $noPay = M('UserCharge')->alias('a')->join('left join huzhu_insure as b on a.insure_id=b.id')
-            ->where(['a.user_id'=>$info['id'],'a.status'=>1])->field('b.*,a.buyorder,a.buyid')->find();
-        $product = M('HuzhuProduct')->getField('id,name');
-        if(!empty($noPay)){
-            $noPay['name'] = $product[$noPay['product_id']];
-        }
-
-        //var_dump($noPay);exit;
-        if(!empty($noPay)){
-            $this->assign('noPay',$noPay);
-            $this->assign('label',1);
-            $this->assign('url',MY_URL);
-            
-        }else{
-            $this->assign('noPay','');
-            $this->assign('label',2);
-        }
-        //var_dump($noPay);exit;
+        //var_dump($info);exit;
         $this->display();
-    }
-
-    /**
-     * 查看我的保障
-     */
-    public function insure(){
-        $info = cookie('userinfo');
-        // 查看是否有保障
-        $res = M('UserProduct')->alias('a')->join('left join huzhu_product as b on a.product_id=b.id')->where(['user_id'=>$info['id']])
-                     ->field('distinct a.order,a.insurance_name,a.time_id,a.happentime,b.name,b.image,b.wait')->select();
-        //var_dump($res);exit;
-
-        if(empty($res)){
-            header('Location:'.U('unsure'));
-        }
-       
-        
-        $this->assign('list',$res);
-        $this->assign('times',M('HuzhuTime')->getField('id,time'));
-        $this->display();
-    }
-
-    /**
-     * 加入的保障详情
-     * @param  $order  订单号
-     */
-    public function insureinfo($order=null){
-
-        // 获取保障信息
-        $list = M('UserProduct')->alias('a')->join('left join huzhu_product as b on a.product_id=b.id')->where(['a.order'=>$order])
-                              ->field('a.*,b.name,b.image,b.wait,b.most')->select();
-        $times = M('HuzhuTime')->getField('id,time');
-        foreach($list as $k=>$v){
-            $list[$k]['starttime'] = date("Y年m月d日",$v['happentime']);
-            if($v['time_id']==1){
-                $list[$k]['endtime'] = date("Y年m月d日",$v['happentime']+2592000);
-            }elseif($v['time_id']==2){
-                $list[$k]['endtime'] = date("Y年m月d日",$v['happentime']+15724800);
-            }elseif($v['time_id']==3){
-                $list[$k]['endtime'] = date("Y年m月d日",$v['happentime']+31536000);
-            }else{
-                $list[$k]['endtime'] = '长期';
-            }
-
-        }
-        $this->assign('list',$list);
-        $this->assign('count',count($list));
-        // 判断保障状态
-        $label = D('HuzhuUser')->getLabel($list,$times);
-
-        // 等待期还剩多少天
-        if($label==1){
-            // 已经过了多少天
-            $wait = floor((time()-$list[0]['createtime'])/86400);
-            $middle = ceil(($list[0]['happentime']-$list[0]['createtime'])/86400) - $wait;
-            $left = '等待期剩余';
-            $right = '天';
-        }elseif($label==2){
-            $left = '已失效';
-            $middle = '';
-            $right = '';
-        }elseif($label==3){
-            $left = '已冻结';
-            $middle = '';
-            $right = '';
-        }elseif($label==4){
-            $left = '有效期剩余';
-            $right = '天';
-            // 过了多少天
-
-            $happentime = floor((time()-$list[0]['happentime'])/86400);
-            if($list[0]['time_id']==1){
-                $middle = 30-$happentime;
-            }elseif($list[0]['time_id']==2){
-                $middle = 183-$happentime;
-            }elseif($list[0]['time_id']==3){
-                $middle = 365-$happentime;
-            }elseif($list[0]['time_id']==4){
-                $left = '长期有效';
-                $middle = '';
-                $right = '';
-            }
-
-
-
-        }
-        $this->assign('left',$left);
-        $this->assign('middle',$middle);
-        $this->assign('right',$right);
-        if(empty($list[0]['most'])){
-            $most = '';
-        }else{
-            $most = $list[0]['most'];
-        }
-        $this->assign('times',$times);
-        $this->assign('most',$most);
-       
-        $this->display();
-    }
-
-    /**
-     * 未加入计划
-     */
-    public function  unsure(){
-        $this->display();
-    }
-
-    ///**
-    // * 申请互助
-    // */
-    //public function apply(){
-    //    $res = M('HuzhuApply')->select();
-    //    $this->assign('res',$res[0]);
-    //    $this->display();
-    //}
-
-    /**
-     * 展示反馈页面
-     */
-    public function suggestion(){
-        $this->display();
-    }
-
-    /**
-     * 用户反馈
-     */
-    public function addSuggestion(){
-        $data = I('post.');
-        $model = M('HuzhuSuggestion');
-        //Vendor('Extend.extend');
-        //var_dump($data);exit;
-        if(empty($data['content'])){
-            exit(json_encode(array('status' => 0, 'info' =>'请填写反馈内容')));
-        }
-        $userinfo = cookie('userinfo');
-        $data['phone'] = $userinfo['phone'];
-        $data['user_id'] = $userinfo['id'];
-        $data['createtime']=time();
-        $re=$model->add($data);
-        if($re){
-           $this->ajaxReturn(['status'=>1,'info'=>'反馈成功']);
-        }else{
-            $this->ajaxReturn(['status'=>0,'info'=>'添加反馈失败，请重新添加']);
-        }
     }
 
     /**
@@ -211,9 +47,17 @@ class UserController extends Controller
      * 展示二维码
      */
     public function code(){
-        $userinfo  = cookie('userinfo');
-        $this->assign('userinfo',$userinfo);
-        $this->assign('path',MY_URL);
+        Vendor('Extend.jssdk');
+        $jssdk = new \JSSDK("wx2ac95455d468b963", "cd4e9adf126f49c299d4b711d95ac482");
+        $signPackage = $jssdk->GetSignPackage();
+        $this->assign('signPackage',$signPackage);
+        $userinfo = cookie('userinfo');
+        $url = 'http://'.$_SERVER['HTTP_HOST'];
+        $news = array("Title" =>$userinfo['nickname']."邀请您注册联聚国际", "Description"=>"", "PicUrl" =>$url.'/Public/img/20170621112909.png', "Url" =>$url.'/Common/register/nickname/'.$userinfo['nickname'].'/phone/'.$userinfo['phone']);
+        $this->assign('news',$news);
+        $this->assign('phone',$userinfo['phone']);
+
+        $this->assign('path',$url);
         $this->display();
     }
 
